@@ -1,0 +1,156 @@
+{
+	"threads": 1,
+	"batches": [
+		{
+			"name": "Test Batch Basic Loan Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Basic Loan Calculate Principal",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "calculate-value",
+					"select": "principal-change",
+					"iteration": 1,
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/outputs/calc_principal.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Basic Loan Calculate Interest",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "calculate-value",
+					"select": "interest-change",
+					"iteration": 1,
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/outputs/calc_interest.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Basic Loan Calculate Periods",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "calculate-periods",
+					"select": "principal-change",
+					"iteration": 2,
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/outputs/calc_periods.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Basic Loan Calculate Yield",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "calculate-yield",
+					"test-type": "yield",
+					"test-value": "11.99939"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/basic_loan/outputs/calc_yield.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		}
+	]
+}

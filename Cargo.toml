@@ -1,0 +1,22 @@
+[package]
+name = "amfnbatch"
+version = "1.0.0"
+authors = ["ShiftLeft Software"]
+description = "AmFn Batch Process"
+license = "MIT"
+edition = "2018"
+
+[lib]
+name = "amfnbatchlib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "amfnbatch"
+path = "src/main.rs"
+
+[dependencies]
+clap = "*"
+rust_decimal = "*"
+json = "*"
+colored = "*"
+amfnengine = { path = "../amfnengine" }

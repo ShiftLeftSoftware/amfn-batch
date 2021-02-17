@@ -1,0 +1,179 @@
+{
+	"threads": 1,
+	"batches": [
+		{
+			"name": "Test Batch Standard Loan Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/standard_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/standard_loan/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Bi-Weekly Loan Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/bi-weekly_loan/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/bi-weekly_loan/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Standard Cashflow Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/standard_cashflow/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/standard_cashflow/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Standard Annuity Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/standard_annuity/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "16010.40"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/standard_annuity/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Standard Bond Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/standard_bond/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/standard_bond/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Standard Investment Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/standard_investment/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/standard_investment/outputs/balance_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		}
+	]
+}

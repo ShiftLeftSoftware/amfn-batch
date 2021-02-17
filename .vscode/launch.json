@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+
+        {
+            "name": "Launch Debug AmFn Batch Process",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/amfnbatch.exe",
+            "args": [
+                "--config",
+                "${workspaceRoot}/test_batch_variable.json",
+                "--pause"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [
+                {"name": "RUST_BACKTRACE", "value": "1"}
+            ],
+            "externalConsole": true
+        }
+    ]
+}

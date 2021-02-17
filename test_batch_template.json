@@ -1,0 +1,133 @@
+{
+	"threads": 1,
+	"batches": [
+		{
+			"name": "Test Batch Template Standard Annuity",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/inputs/templates.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "template-cashflow",
+					"template-group": "Standard annuity",
+					"cashflow-new": "Cashflow New",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "2,1,13,1"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/templates/outputs/annuity_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Template Standard Bond",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/inputs/templates.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "template-cashflow",
+					"template-group": "Standard bond",
+					"cashflow-new": "Cashflow New",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "2,1,9,1"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/templates/outputs/bond_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Template Standard Investment",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/inputs/templates.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "template-cashflow",
+					"template-group": "Standard investment",
+					"cashflow-new": "Cashflow New",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "2,1,10,1"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/templates/outputs/investment_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Template Standard Loan",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "../test/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "../test/inputs/templates.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "template-cashflow",
+					"template-group": "Standard loan",
+					"cashflow-new": "Cashflow New",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "1,2,12,1"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "../test/templates/outputs/loan_cashflow.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		}
+	]
+}
