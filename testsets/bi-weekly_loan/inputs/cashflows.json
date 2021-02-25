@@ -1,0 +1,189 @@
+{
+	"cashflows": [
+		{
+			"name": "Bi-weekly loan",
+			"preferences": {
+				"group": "Standard loan",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard loan"
+					}
+				],
+				"descriptor-list": [
+				]
+			},
+			"event-list": [
+				{
+					"event-type": "Loan",
+					"event-date": {
+						"date": "2002-07-01"
+					},
+					"sort-order": 10,
+					"event-value": {
+						"value": "300000.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "2-weeks",
+					"end-date": "2002-07-01",
+					"extension": {
+						"principal-change": {
+							"eom": false,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "decrease"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "Custom",
+							"name": "Description",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "",
+							"event-index": 0
+						},
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Loan\"",
+							"event-index": 0
+						}
+					],
+					"event-next-name": "Interest rate"
+				},
+				{
+					"event-type": "Int Act Per 360",
+					"event-date": {
+						"date": "2002-07-01",
+						"expression": "intEndDate"
+					},
+					"sort-order": 40,
+					"event-value": {
+						"value": "6.75"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "2-weeks",
+					"end-date": "2002-07-01",
+					"extension": {
+						"interest-change": {
+							"interest-method": "actuarial",
+							"day-count-basis": "periodic",
+							"days-in-year": 360
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "Custom",
+							"name": "Description",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "Bi-weekly pymts",
+							"event-index": 1
+						},
+						{
+							"propagate": false,
+							"group": "IntChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(intRound, \" Rnd\", \"\")",
+							"event-index": 1
+						}
+					],
+					"event-next-name": "Normal payment"
+				},
+				{
+					"event-type": "Pymt",
+					"event-date": {
+						"date": "2002-07-15"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "896.93"
+					},
+					"event-periods": {
+						"periods": 781
+					},
+					"intervals": 1,
+					"frequency": "2-weeks",
+					"end-date": "2032-06-07",
+					"extension": {
+						"principal-change": {
+							"eom": false,
+							"principal-first": false,
+							"statistics": true,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 2
+						}
+					],
+					"event-next-name": "Normal payment"
+				},
+				{
+					"event-type": "Pymt",
+					"event-date": {
+						"date": "2032-06-21"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "904.31"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "2-weeks",
+					"end-date": "2032-06-21",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": true,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 3
+						}
+					],
+					"event-next-name": "Normal payment"
+				}
+			]
+		}
+	]
+}

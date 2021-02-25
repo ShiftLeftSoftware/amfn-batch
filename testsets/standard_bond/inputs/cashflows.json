@@ -1,0 +1,211 @@
+{
+	"cashflows": [
+		{
+			"name": "Standard bond",
+			"preferences": {
+				"group": "Standard bond",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard bond"
+					}
+				],
+				"descriptor-list": [
+				]
+			},
+			"event-list": [
+				{
+					"event-type": "Price",
+					"event-date": {
+						"date": "2002-07-01"
+					},
+					"sort-order": 10,
+					"event-value": {
+						"value": "10000.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "6-months",
+					"end-date": "2002-07-01",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Price\"",
+							"event-index": 0
+						}
+					],
+					"event-next-name": "Interest rate"
+				},
+				{
+					"event-type": "Int 30 360",
+					"event-date": {
+						"date": "2002-07-01",
+						"expression": "intEndDate"
+					},
+					"sort-order": 40,
+					"event-value": {
+						"value": "4.5"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "6-months",
+					"end-date": "2002-07-01",
+					"extension": {
+						"interest-change": {
+							"interest-method": "actuarial",
+							"day-count-basis": "30",
+							"days-in-year": 360
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "IntChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Int \" + strDayCount + \" \" + format(intDaysInYear) + if(intRound, \" Rnd\", \"\")",
+							"event-index": 1
+						}
+					],
+					"event-next-name": "Fixed coupon"
+				},
+				{
+					"event-type": "Cur Act",
+					"event-date": {
+						"date": "2003-01-01"
+					},
+					"sort-order": 20,
+					"event-value": {
+						"value": "0.0"
+					},
+					"event-periods": {
+						"periods": 19
+					},
+					"intervals": 1,
+					"frequency": "6-months",
+					"end-date": "2012-01-01",
+					"extension": {
+						"current-value": {
+							"eom": true,
+							"passive": false,
+							"present": false
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "CurValue",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Cur\" + if(intPassive, \"\", \" Act\")",
+							"event-index": 2
+						}
+					]
+				},
+				{
+					"event-type": "Call",
+					"event-date": {
+						"date": "2010-07-01",
+						"expression": "intEndDate"
+					},
+					"sort-order": 20,
+					"event-value": {
+						"value": "0.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "6-months",
+					"end-date": "2010-07-01",
+					"extension": {
+						"current-value": {
+							"eom": true,
+							"passive": false,
+							"present": true
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "CurValue",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Call\"",
+							"event-index": 3
+						},
+						{
+							"propagate": false,
+							"group": "Custom",
+							"name": "Description",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "8 year call",
+							"event-index": 3
+						}
+					]
+				},
+				{
+					"event-type": "Par",
+					"event-date": {
+						"date": "2012-07-01",
+						"expression": "intEndDate"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "15605.09"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "6-months",
+					"end-date": "2012-07-01",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "decrease"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Par\"",
+							"event-index": 4
+						}
+					]
+				}
+			]
+		}
+	]
+}

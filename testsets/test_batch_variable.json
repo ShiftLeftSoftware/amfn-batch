@@ -1,0 +1,63 @@
+{
+	"threads": 1,
+	"batches": [
+		{
+			"name": "Test Batch Negative to Positive Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/neg_to_pos/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/neg_to_pos/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Positive to Negative Balance",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/pos_to_neg/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "balance-cashflow",
+					"test-type": "balance",
+					"test-value": "0.0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/pos_to_neg/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		}
+	]
+}

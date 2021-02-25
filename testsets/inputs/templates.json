@@ -1,0 +1,3629 @@
+{
+	"template-groups": [
+		{
+			"group": "Standard annuity",
+			"preferences": {
+				"group": "Standard annuity",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard annuity"
+					}
+				],
+				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Skip-periods~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Balance~70|Accrued-balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Yield|InitPrem|IntStart|IntRate|IntFreq|PremStart|PremAmt|PremFreq|PremTerm|RenStart|RenRate|RenFreq|DrawStart|DrawAmt|DrawFreq|DrawTerm|FinalBal"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal amount\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal frequency\"~if(am(\"PrinFirstStat\", \"Value\") > 0, am(\"PrinFirstStat\", \"Frequency\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal term\"~if(am(\"PrinFirstStat\", \"Date\") > 0, format(datediff(am(\"PrinFirstStat\", \"Date\"), am(\"PrinLastStat\", \"Date\"), am(\"PrinFirstStat\", \"Frequency\"), 1, 1) + 1), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "FinalBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "InitPrem",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Initial premium amount\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium amount\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, formatcurrency(am(\"FirstStart=Per prem\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium frequency\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, am(\"FirstStart=Per prem\", \"Frequency\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium date\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, formatdate(am(\"FirstStart=Per prem\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium term\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, format(datediff(am(\"FirstStart=Per prem\", \"Date\"), am(\"LastStart=Per prem\", \"Date\"), am(\"FirstStart=Per prem\", \"Frequency\"), 1, 1) + 1), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Renewal interest frequency\"~am(\"IntLast\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Renewal interest frequency\"~formatnumber(am(\"IntLast\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Renewal interest date\"~formatdate(am(\"IntLast\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
+				]
+			},
+			"template-events": [
+				{
+					"initial": false,
+					"name": "Active balance",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": false
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Act\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Annual statistic",
+					"event-list": [
+						{
+							"event-type": "Stat Annual EOM",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "datefiscal(intDate, \"1-year\", 1, 1)"
+							},
+							"sort-order": 30,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"statistic-value": {
+									"eom": true,
+									"final": false,
+									"name": "Annual"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "StatValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Final withdrawal",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 11,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decAmount, if(decSurrender > 0, decSurrender, decAccBalance + decBalance)), decAmount - (decAmount * (1 / (1 + (decValue / 100))))",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decSurrender",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Final surr\""
+								}
+							]
+						},
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decAccBalance + decBalance",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Final draw\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Fixed fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 16,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Fix fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Fixed surrender",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0",
+								"expression": "if(decWithdrawal > 0, decWithdrawal, am(\"PrinPrevStat\", \"Value\")) * decValue / 100",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decWithdrawal",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Fix surr\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Graduated premium",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decNewValue, default(decNewValue, decValue)), set(decNewValue, round(decNewValue + if(intSequence > 0 and intSequence mod intPeriodsPerStep = 0, decNewValue * (decGradPercent / 100), 0.0)))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decGradPercent",
+									"parameter-type": "decimal",
+									"value": "10.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Grad prem\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Graduated withdrawal",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decNewValue, default(decNewValue, decValue)), set(decNewValue, round(decNewValue + if(intSequence > 0 and intSequence mod intPeriodsPerStep = 0, decNewValue * (decGradPercent / 100), 0.0)))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decGradPercent",
+									"parameter-type": "decimal",
+									"value": "10.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Grad draw\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": true,
+					"name": "Initial premium",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Init prem\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest rate",
+					"event-list": [
+						{
+							"event-type": "Int Act Per 360",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 40,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"interest-change": {
+									"interest-method": "actuarial",
+									"day-count-basis": "periodic",
+									"days-in-year": 360
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "IntChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+								}
+							],
+							"event-next-name": "Periodic premium"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Percent fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0",
+								"expression": "(decAccBalance + decBalance) * decValue / 100",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pct fee\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Periodic premium",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Per prem\""
+								}
+							],
+							"event-next-name": "Periodic withdrawal"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Periodic withdrawal",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Per draw\""
+								}
+							],
+							"event-next-name": "Periodic withdrawal"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Present value",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act PV",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": true
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Cur\" + if(intPassive, \"\", \"Act\") + if(intPresent, \"PV\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step premium",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step prem\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step withdrawal",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step draw\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Tax",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Tax\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				}
+			]
+		},
+		{
+			"group": "Standard bond",
+			"preferences": {
+				"group": "Standard bond",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard bond"
+					}
+				],
+				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Value~70|Interest~70|SLInterest~70|IntOnInterest~70|Balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Status",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Balance: \" + cashflow(\"StrBal\") +, Interest: \" + formatcurrency(cashflow(\"IntBefore\")) + \"+\" + formatcurrency(cashflow(\"IntAfter\")) + \"=\" + formatcurrency(cashflow(\"IntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Type|Yield|CompInt|SLInt|IntOnInt|Price|IntRate|IntFreq|CoupVal|CoupFirst|CoupLast|CallVal|CallDate|ParVal|MatDate"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CallDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Call date\"~if(am(\"CurFirstPV\", \"Date\") > 0, formatdate(am(\"CurFirstPV\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CallVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Call value\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CompInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compound interest\"~formatcurrency(cashflow(\"IntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupFirst",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "First coupon date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupLast",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last coupon date\"~if(am(\"PrinLastStat\", \"Date\") > 0, formatdate(am(\"PrinLastStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Coupon value\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Interest frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntOnInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest on interest~ formatcurrency(cashflow(\"IntTotal\")-cashflow(\"SLIntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "MatDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Maturity date\"~formatdate(if(round(cashflow(\"Balance\")) > 0, cashflow(\"BalDate\"), am(\"PrinLast\", \"Date\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ParVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Par value\"~formatcurrency(if(round(cashflow(\"Balance\")) > 0, cashflow(\"Balance\"), am(\"PrinLast\", \"Value\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Price",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Price\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "SLInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Straight-line interest\"~formatcurrency(cashflow(\"SLIntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Type",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compute method\"~am(\"IntFirst\", \"Type\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
+				]
+			},
+			"template-events": [
+				{
+					"initial": false,
+					"name": "Active balance",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": false
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Cur\" + if(intPassive, \"\", \" Act\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Active fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Act fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Annual statistic",
+					"event-list": [
+						{
+							"event-type": "Stat Annual EOM",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "datefiscal(intDate, \"1-year\", 1, 1)"
+							},
+							"sort-order": 30,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"statistic-value": {
+									"eom": true,
+									"final": false,
+									"name": "Annual"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "StatValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Call value",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act PV",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": true
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Call\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Commission",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0",
+								"expression": "am(\"PrinFirst\", \"Value\") * decValue / 100",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Comm\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Fixed coupon",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "6-months",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Fix Coup\""
+								}
+							],
+							"event-next-name": "Par value"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest coupon",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decInterest + decValue",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "6-months",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Int Coup\""
+								}
+							],
+							"event-next-name": "Par value"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest rate",
+					"event-list": [
+						{
+							"event-type": "Int Act 30 360",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 40,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"interest-change": {
+									"interest-method": "actuarial",
+									"day-count-basis": "30",
+									"days-in-year": 360
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "IntChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Int \" + strDayCount + \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
+								}
+							],
+							"event-next-name": "Fixed coupon"
+						}
+					]
+				},
+				{
+					"initial": true,
+					"name": "Issue price",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Price\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Par value",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Par\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Passive fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pass fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step coupon",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step Coup\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Tax",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Tax\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				}
+			]
+		},
+		{
+			"group": "Standard investment",
+			"preferences": {
+				"group": "Standard investment",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard investment"
+					}
+				],
+				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Skip-periods~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Balance~70|Accrued-balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Type|EAR|PR|DR|Yield|OrigBal|IntStart|IntRate|CompFreq|ReturnStart|ReturnAmt|ReturnFreq|OrigTerm|ReturnsMade|RemTerm|IntAccumTo|CurBal|NextReturn|LastDate|LastReturn|FinalBal"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CompFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compound frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CurBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Current balance\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), formatcurrency(abs(am(\"PrinFirst\", \"Balance\"))))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Daily rate\"~if(am(\"IntFirst\", \"DR\") > 0, formatnumber(am(\"IntFirst\", \"DR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "EAR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Effective rate\"~if(am(\"IntFirst\", \"EAR\") > 0, formatnumber(am(\"IntFirst\", \"EAR\")) + \"%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "FinalBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntAccumTo",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Int accum to\"~formatdate(if(am(\"CurFirstPV\", \"Date\") > 0, am(\"CurFirstPV\", \"Date\"), am(\"IntFirst\", \"Date\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Int start date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last return date\"~formatdate(am(\"PrinLastStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastReturn",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last return amt\"~formatcurrency(am(\"PrinLastStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "NextReturn",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Next return\"~formatdate(am(\"PrinFirstStatPV\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Original balance\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Original term\"~cashflow(\"PrinTotal\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic rate\"~if(am(\"IntFirst\", \"PR\") > 0, formatnumber(am(\"IntFirst\", \"PR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RemTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Remaining term\"~cashflow(\"PrinAfter\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Return amount\"~formatcurrency(am(\"PrinFirstStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Return frequency\"~am(\"PrinFirstStatPV\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"First return\"~formatdate(am(\"PrinFirstStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnsMade",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Returns made\"~cashflow(\"PrinBefore\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Type",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compute method\"~am(\"IntFirst\", \"Type\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
+				]
+			},
+			"template-events": [
+				{
+					"initial": false,
+					"name": "Active balance",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": false
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Cur\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Active fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Act fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Annual statistic",
+					"event-list": [
+						{
+							"event-type": "Stat Annual EOM",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "datefiscal(intDate, \"1-year\", 1, 1)"
+							},
+							"sort-order": 30,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"statistic-value": {
+									"eom": true,
+									"final": false,
+									"name": "Annual"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "StatValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Graduated invest",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decNewValue, default(decNewValue, decValue)), set(decNewValue, round(decNewValue + if(intSequence > 0 and intSequence mod intPeriodsPerStep = 0, decNewValue * (decGradPercent / 100), 0.0)))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decGradPercent",
+									"parameter-type": "decimal",
+									"value": "10.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Grad Inv\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Graduated return",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decNewValue, default(decNewValue, decValue)), set(decNewValue, round(decNewValue + if(intSequence > 0 and intSequence mod intPeriodsPerStep = 0, decNewValue *  (decGradPercent / 100), 0.0)))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decGradPercent",
+									"parameter-type": "decimal",
+									"value": "10.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Grad Ret\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": true,
+					"name": "Initial invest",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Init Inv \" + if(intPrinFirst, \" First\", \"\")"
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest rate",
+					"event-list": [
+						{
+							"event-type": "Int Act Per 360",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 40,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"interest-change": {
+									"interest-method": "actuarial",
+									"day-count-basis": "periodic",
+									"days-in-year": 360
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "IntChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+								}
+							],
+							"event-next-name": "Normal invest"
+						}
+					]
+				},
+				{
+					"initial": true,
+					"name": "Normal invest",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Invest \" + if(intPrinFirst, \" First\", \"\")"
+								}
+							],
+							"event-next-name": "Normal return"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Normal return",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Return\""
+								}
+							],
+							"event-next-name": "Normal return"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Passive fee",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pass fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Present value",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act PV",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": true
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Cur\" + if(intPassive, \"\", \"Act\") + if(intPresent, \"PV\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step invest",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step Inv\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step return",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step Ret\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Tax",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Tax\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				}
+			]
+		},
+		{
+			"group": "Standard loan",
+			"preferences": {
+				"group": "Standard loan",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard loan"
+					}
+				],
+				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Skip-periods~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Value-to-interest~70|Value-to-principal~70|Balance~70|Accrued-balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Type|EAR|PR|DR|APR|LTV|FinCharge|AmountFin|TotalOfPymts|OrigBal|IntStart|IntRate|CompFreq|PymtStart|PymtAmt|PayFreq|OrigTerm|PymtsMade|RemTerm|IntPaidTo|CurBal|NextPymt|LastDate|LastAmt"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "APR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "APR\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "AmountFin",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Amount financed\"~formatcurrency(cashflow(\"PrinTotalDecr\") - cashflow(\"AuxActiveIncr\") - cashflow(\"AuxPassiveIncr\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CompFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compound frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CurBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Current balance\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), formatcurrency(abs(am(\"PrinFirst\", \"Balance\"))))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Daily rate\"~if(am(\"IntFirst\", \"DR\") > 0, formatnumber(am(\"IntFirst\", \"DR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "EAR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Effective rate\"~if(am(\"IntFirst\", \"EAR\") > 0, formatnumber(am(\"IntFirst\", \"EAR\")) + \"%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "FinCharge",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Finance charge\"~formatcurrency(cashflow(\"IntTotal\") + cashflow(\"AuxPassiveIncr\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntPaidTo",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Int paid to\"~formatdate(if(am(\"CurFirstPV\", \"Date\") > 0, am(\"CurFirstPV\", \"Date\"), am(\"IntFirst\", \"Date\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Int start date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LTV",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "LTV\"~formatnumber(if(am(\"CurFirstPV\", \"Balance\") = 0, 100, round(abs(am(\"CurFirstPV\", \"Balance\") / am(\"PrinFirst\", \"Value\")) * 100))) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon amount\", \"Last pymt amt\")~formatcurrency(am(\"PrinLastStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon date\", \"Last pymt date\")~formatdate(am(\"PrinLastStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "NextPymt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Next pymt due\"~formatdate(am(\"PrinFirstStatPV\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Original balance\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Original term\"~cashflow(\"PrinTotal\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic rate\"~if(am(\"IntFirst\", \"PR\") > 0, formatnumber(am(\"IntFirst\", \"PR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PayFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Payment frequency\"~am(\"PrinFirstStat\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PymtAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Payment amount\"~formatcurrency(am(\"PrinFirstStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PymtStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"First pymt due\"~formatdate(am(\"PrinFirstStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PymtsMade",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Payments made\"~cashflow(\"PrinBefore\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RemTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Remaining term\"~cashflow(\"PrinAfter\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "TotalOfPymts",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Total of payments\"~formatcurrency(cashflow(\"PrinTotalDecr\") + cashflow(\"IntTotal\") - cashflow(\"AuxActiveIncr\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Type",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compute method\"~am(\"IntFirst\", \"Type\")"
+					}
+				]
+			},
+			"template-events": [
+				{
+					"initial": false,
+					"name": "Annual statistic",
+					"event-list": [
+						{
+							"event-type": "Stat Annual EOM",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "datefiscal(intDate, \"1-year\", 1, 1)"
+							},
+							"sort-order": 30,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-year",
+							"end-date": "2002-01-01",
+							"extension": {
+								"statistic-value": {
+									"eom": true,
+									"final": false,
+									"name": "Annual"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "StatValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Existing fixed",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + (decExistingBal * pr(decExistingRate) / 100) - (decValue * pr(decExistingRate) / 100 * intSequence)",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decExistingBal",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decExistingRate",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"ExistFix\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Fee paid",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Fee\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Graduated payment",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decNewValue, default(decNewValue, decValue)), set(decNewValue, round(decNewValue + if(intSequence > 0 and intSequence mod intPeriodsPerStep = 0, decNewValue * (decGradPercent / 100), 0.0)))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decGradPercent",
+									"parameter-type": "decimal",
+									"value": "10.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Grad\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Insurance",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Insur\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest rate",
+					"event-list": [
+						{
+							"event-type": "Int Act Per 360",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 40,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"interest-change": {
+									"interest-method": "actuarial",
+									"day-count-basis": "periodic",
+									"days-in-year": 360
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "IntChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+								}
+							],
+							"event-next-name": "Normal payment"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest rate ARM",
+					"event-list": [
+						{
+							"event-type": "Int Act Per 360",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intEndDate"
+							},
+							"sort-order": 40,
+							"event-value": {
+								"value": "0.0",
+								"expression": "set(decIntPrev, am(\"IntPrev\", \"Value\")), set(decIntPrev, if(decIntPrev = 0, decValue, decIntPrev)), set(decResult, roundfraction(decValue + decMargin, .125)), set(decResult, if(decIntPrev = 0 or decAdjustCapPlus = 0, decResult, min(decIntPrev + decAdjustCapPlus, decResult))), set(decResult, if(decIntPrev = 0, decResult, max(decIntPrev - decAdjustCapMinus, decResult))), set(decResult, if(decLifeCapPlus = 0, decResult, min(decLifeCapPlus, decResult))), set(decResult, max(decLifeCapMinus, decResult))"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"interest-change": {
+									"interest-method": "actuarial",
+									"day-count-basis": "periodic",
+									"days-in-year": 360
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decMargin",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decAdjustCapPlus",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decAdjustCapMinus",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decLifeCapPlus",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decLifeCapMinus",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "IntChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "IntARM \" + strMethod + \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+								}
+							],
+							"event-next-name": "Normal payment"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Interest+fixed pymt",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decInterest + decValue",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pymt+Int\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": true,
+					"name": "Loan amount",
+					"event-list": [
+						{
+							"event-type": "Prin Decr EOM",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 10,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "decrease"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Loan\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Normal payment",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pymt \" + if(intPrinFirst, \"First\", \"\")"
+								}
+							],
+							"event-next-name": "Normal payment"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Normal+bump pymt",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + decAddAmount + if(intSequence mod intPeriodsPerBump = intPeriodsUntilBump, decBumpAmount, 0)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decAddAmount",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "decBumpAmount",
+									"parameter-type": "decimal",
+									"value": "0.0"
+								},
+								{
+									"name": "intPeriodsPerBump",
+									"parameter-type": "integer",
+									"value": "0"
+								},
+								{
+									"name": "intPeriodsUntilBump",
+									"parameter-type": "integer",
+									"value": "0"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")"
+								}
+							],
+							"event-next-name": "Normal payment"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Points",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 14,
+							"event-value": {
+								"value": "0.0",
+								"expression": "am(\"PrinFirst\", \"Value\") * decValue / 100",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Points\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Prepaid interest",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Aux",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "if(decValue > 0, decValue, decInterest)",
+								"expr-balance": true
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "Custom",
+									"name": "Description",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "",
+									"expression": "Prepaid interest due on \" + formatdate(am(\"PrinFirst\", \"Date\"))"
+								},
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"PreInt\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Present value",
+					"event-list": [
+						{
+							"event-type": "Cur EOM Act PV",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 20,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"current-value": {
+									"eom": true,
+									"passive": false,
+									"present": true
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "CurValue",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \"PV\", \"\")"
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Step payment",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM Stats",
+							"event-date": {
+								"date": "2002-01-01"
+							},
+							"sort-order": 12,
+							"event-value": {
+								"value": "0.0",
+								"expression": "decValue + ((intSequence / intPeriodsPerStep) * decStepAmount)"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": true,
+									"auxiliary": false,
+									"passive": false,
+									"principal-type": "increase"
+								}
+							},
+							"parameter-list": [
+								{
+									"name": "decStepAmount",
+									"parameter-type": "decimal",
+									"value": "100.0"
+								},
+								{
+									"name": "intPeriodsPerStep",
+									"parameter-type": "integer",
+									"value": "1"
+								}
+							],
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Step\""
+								}
+							]
+						}
+					]
+				},
+				{
+					"initial": false,
+					"name": "Tax",
+					"event-list": [
+						{
+							"event-type": "Prin Incr EOM AuxP",
+							"event-date": {
+								"date": "2002-01-01",
+								"expression": "intDate"
+							},
+							"sort-order": 18,
+							"event-value": {
+								"value": "0.0"
+							},
+							"event-periods": {
+								"periods": 1
+							},
+							"intervals": 1,
+							"frequency": "1-month",
+							"end-date": "2002-01-01",
+							"extension": {
+								"principal-change": {
+									"eom": true,
+									"principal-first": false,
+									"statistics": false,
+									"auxiliary": true,
+									"passive": true,
+									"principal-type": "increase"
+								}
+							},
+							"descriptor-list": [
+								{
+									"propagate": false,
+									"group": "PrinChange",
+									"name": "EventType",
+									"descriptor-type": "custom",
+									"descriptor-code": "",
+									"value": "\"Tax\""
+								}
+							],
+							"event-next-name": "Interest rate"
+						}
+					]
+				}
+			]
+		}
+	]
+}

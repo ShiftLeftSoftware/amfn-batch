@@ -1,0 +1,172 @@
+{
+	"cashflows": [
+		{
+			"name": "Positive to Negative",
+			"preferences": {
+				"group": "Standard investment",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard investment"
+					}
+				],
+				"descriptor-list": [
+				]
+			},
+			"event-list": [
+				{
+					"event-type": "Init Inv",
+					"event-date": {
+						"date": "2021-02-13"
+					},
+					"sort-order": 10,
+					"event-value": {
+						"value": "40000.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Init Inv \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 1
+						}
+					]
+				},
+				{
+					"event-type": "Int Act Per 360",
+					"event-date": {
+						"date": "2021-02-13",
+						"expression": "intEndDate"
+					},
+					"sort-order": 40,
+					"event-value": {
+						"value": "10.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"extension": {
+						"interest-change": {
+							"interest-method": "actuarial",
+							"day-count-basis": "periodic",
+							"days-in-year": 360
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "Custom",
+							"name": "Description",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "Initial rate",
+							"event-index": 2
+						},
+						{
+							"propagate": false,
+							"group": "IntChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(intRound, \" Rnd\", \"\")",
+							"event-index": 2
+						}
+					]
+				},
+				{
+					"event-type": "Return",
+					"event-date": {
+						"date": "2021-03-13"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "1000.0"
+					},
+					"event-periods": {
+						"periods": 80
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": true,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "decrease"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Return\"",
+							"event-index": 4
+						}
+					]
+				},
+				{
+					"event-type": "Invest",
+					"event-date": {
+						"date": "2027-11-13"
+					},
+					"sort-order": 10,
+					"event-value": {
+						"value": "35683.78"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Invest \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 3
+						}
+					]
+				}
+			]
+		}
+	]
+}

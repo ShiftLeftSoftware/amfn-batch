@@ -1,0 +1,205 @@
+{
+	"cashflows": [
+		{
+			"name": "Standard cash flow",
+			"preferences": {
+				"group": "Standard loan",
+				"parameter-list": [
+					{
+						"name": "strDescription",
+						"parameter-type": "string",
+						"value": "Standard loan"
+					}
+				],
+				"descriptor-list": [
+				]
+			},
+			"event-list": [
+				{
+					"event-type": "Loan",
+					"event-date": {
+						"date": "2002-07-01"
+					},
+					"sort-order": 10,
+					"event-value": {
+						"value": "100000.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"end-date": "2002-07-01",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": false,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "decrease"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Loan\"",
+							"event-index": 0
+						}
+					],
+					"event-next-name": "Interest rate"
+				},
+				{
+					"event-type": "Int Act Per 360",
+					"event-date": {
+						"date": "2002-07-01",
+						"expression": "intEndDate"
+					},
+					"sort-order": 40,
+					"event-value": {
+						"value": "7.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"end-date": "2002-07-01",
+					"extension": {
+						"interest-change": {
+							"interest-method": "actuarial",
+							"day-count-basis": "periodic",
+							"days-in-year": 360
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "IntChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(intRound, \" Rnd\", \"\")",
+							"event-index": 1
+						}
+					],
+					"event-next-name": "Normal payment"
+				},
+				{
+					"event-type": "Pymt",
+					"event-date": {
+						"date": "2002-08-01"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "1161.08"
+					},
+					"event-periods": {
+						"periods": 119
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"end-date": "2012-06-01",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": true,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 2
+						}
+					],
+					"event-next-name": "Normal payment"
+				},
+				{
+					"event-type": "Cur Act PV",
+					"event-date": {
+						"date": "2005-05-01"
+					},
+					"sort-order": 20,
+					"event-value": {
+						"value": "0.0"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"end-date": "2005-05-01",
+					"extension": {
+						"current-value": {
+							"eom": true,
+							"passive": false,
+							"present": true
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "CurValue",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \" PV\", \"\")",
+							"event-index": 3
+						}
+					]
+				},
+				{
+					"event-type": "Pymt",
+					"event-date": {
+						"date": "2012-07-01"
+					},
+					"sort-order": 12,
+					"event-value": {
+						"value": "1161.91"
+					},
+					"event-periods": {
+						"periods": 1
+					},
+					"intervals": 1,
+					"frequency": "1-month",
+					"end-date": "2012-07-01",
+					"extension": {
+						"principal-change": {
+							"eom": true,
+							"principal-first": false,
+							"statistics": true,
+							"auxiliary": false,
+							"passive": false,
+							"principal-type": "increase"
+						}
+					},
+					"descriptor-list": [
+						{
+							"propagate": false,
+							"group": "PrinChange",
+							"name": "EventType",
+							"descriptor-type": "custom",
+							"descriptor-code": "",
+							"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")",
+							"event-index": 4
+						}
+					],
+					"event-next-name": "Normal payment"
+				}
+			]
+		}
+	]
+}

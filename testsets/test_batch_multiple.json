@@ -1,0 +1,138 @@
+{
+	"threads": 1,
+	"batches": [
+		{
+			"name": "Test Batch Combine",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/combine/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "combine-cashflow",
+					"cashflow-name": "Cashflow 1",
+					"cashflow-name2": "Cashflow 2",
+					"cashflow-new": "Cashflow New",
+					"test-type": "balance",
+					"test-value": "49.0",
+					"test-str": "0,1,3,0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/combine/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Merge",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/merge/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "merge-cashflow",
+					"cashflow-name": "Cashflow 1",
+					"cashflow-name2": "Cashflow 2",
+					"cashflow-new": "Cashflow New",
+					"cashflow-options": "int-action: int-all",
+					"test-type": "balance",
+					"test-value": "49.0",
+					"test-str": "0,2,6,0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/merge/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Split",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/split/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "split-cashflow",
+					"cashflow-name": "Cashflow 1",
+					"cashflow-new": "Cashflow New",
+					"cashflow-options": "all-events: true",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "0,2,6,0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/split/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		},
+		{
+			"name": "Test Batch Transform",
+			"locale": "en-US",
+			"enabled": true,
+			"inputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/inputs/locales.json"
+				},
+				{
+					"io-type": "file",
+					"location": "testsets/transform/inputs/cashflows.json"
+				}
+			],
+			"actions": [
+				{
+					"action": "transform-cashflow",
+					"cashflow-name": "Cashflow 1",
+					"cashflow-new": "Cashflow New",
+					"cashflow-options": "after-pv: true, omit-int: false",
+					"test-type": "balance",
+					"test-value": "0.0",
+					"test-str": "0,1,3,0"
+				}
+			],
+			"outputs": [
+				{
+					"io-type": "file",
+					"location": "testsets/transform/outputs/cashflows.json",
+					"options": "cashflow-preferences | event-list | amortization-rollups"
+				}
+			]
+		}
+	]
+}
