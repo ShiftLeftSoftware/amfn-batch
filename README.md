@@ -2,9 +2,9 @@
 
 Amortization Functions (AmFn) Batch Process for Rust
 ==========================================================
-API Documentation: [latest release](https://docs.rs/amfn-batch)
+API Documentation: [latest release](https://docs.rs/amfnbatch)
 
-[Crates.io](https://crates.io/crates/amfn-batch)
+[Crates.io](https://crates.io/crates/amfnbatch)
 
 [Homepage](https://shiftleftsoftware.com)
 
