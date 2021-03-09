@@ -19,7 +19,7 @@ fn batch_single() {
     let mut config_names: Vec<&str> = Vec::new();
     config_names.push(TEST_FILE);
 
-    match ProcessBatch::process_batches(config_names, false) {
+    match ProcessBatch::process_batches(config_names) {
         Err(e) => {
             assert!(false, "{:?}", e);
         }

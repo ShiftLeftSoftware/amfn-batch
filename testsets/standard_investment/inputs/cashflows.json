@@ -12,6 +12,214 @@
 					}
 				],
 				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Skip-periods~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Balance~70|Accrued-balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Type|EAR|PR|DR|Yield|OrigBal|IntStart|IntRate|CompFreq|ReturnStart|ReturnAmt|ReturnFreq|OrigTerm|ReturnsMade|RemTerm|IntAccumTo|CurBal|NextReturn|LastDate|LastReturn|FinalBal"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CompFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compound frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CurBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Current balance\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), formatcurrency(abs(am(\"PrinFirst\", \"Balance\"))))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Daily rate\"~if(am(\"IntFirst\", \"DR\") > 0, formatnumber(am(\"IntFirst\", \"DR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "EAR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Effective rate\"~if(am(\"IntFirst\", \"EAR\") > 0, formatnumber(am(\"IntFirst\", \"EAR\")) + \"%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "FinalBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntAccumTo",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Int accum to\"~formatdate(if(am(\"CurFirstPV\", \"Date\") > 0, am(\"CurFirstPV\", \"Date\"), am(\"IntFirst\", \"Date\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Int start date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last return date\"~formatdate(am(\"PrinLastStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "LastReturn",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last return amt\"~formatcurrency(am(\"PrinLastStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "NextReturn",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Next return\"~formatdate(am(\"PrinFirstStatPV\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Original balance\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "OrigTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Original term\"~cashflow(\"PrinTotal\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PR",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic rate\"~if(am(\"IntFirst\", \"PR\") > 0, formatnumber(am(\"IntFirst\", \"PR\")) +%\", \"Undefined\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RemTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Remaining term\"~cashflow(\"PrinAfter\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Return amount\"~formatcurrency(am(\"PrinFirstStat\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Return frequency\"~am(\"PrinFirstStatPV\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"First return\"~formatdate(am(\"PrinFirstStat\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ReturnsMade",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Returns made\"~cashflow(\"PrinBefore\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Type",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compute method\"~am(\"IntFirst\", \"Type\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
 				]
 			},
 			"event-list": [

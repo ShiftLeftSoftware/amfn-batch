@@ -51,8 +51,7 @@ impl ProcessBatch {
     /// * The batch result or an error code.
 
     pub fn process_batches(
-        config_names: Vec<&str>,
-        show_updates: bool,
+        config_names: Vec<&str>
     ) -> Result<ElemBatchResult, crate::ErrorType> {
         let mut total_batches: usize = 0;
         let mut total_successes: usize = 0;
@@ -145,8 +144,7 @@ impl ProcessBatch {
                     index,
                     &batch_completions,
                     &action_successes,
-                    &action_failures,
-                    show_updates,
+                    &action_failures
                 ) {
                     break;
                 }
@@ -186,8 +184,7 @@ impl ProcessBatch {
                         index,
                         &batch_completions,
                         &action_successes,
-                        &action_failures,
-                        show_updates,
+                        &action_failures
                     ) {
                         break;
                     }
@@ -232,7 +229,6 @@ impl ProcessBatch {
     /// * `actions` - The vector of batch actions.
     /// * `inputs` - The vector of batch inputs.
     /// * `outputs` - The vector of batch outputs.
-    /// * `show_updates` - Show updates.
     ///
     /// # Return
     ///
@@ -244,8 +240,7 @@ impl ProcessBatch {
         locale: String,
         actions: Vec<ElemBatchAction>,
         inputs: Vec<ElemBatchIO>,
-        outputs: Vec<ElemBatchIO>,
-        show_updates: bool,
+        outputs: Vec<ElemBatchIO>
     ) -> Result<ElemBatchResult, crate::ErrorType> {
         if group.is_empty() {
             BatchUtility::println(format!("Processing: {}", name), Color::White);
@@ -253,11 +248,7 @@ impl ProcessBatch {
             BatchUtility::println(format!("Processing: {} ({})", name, group), Color::White);
         }
 
-        let engine = CalcEngine::new(UpdateListener::new(move |s| {
-            if show_updates {
-                BatchUtility::println(s, Color::White);
-            }
-        }));
+        let engine = CalcEngine::new();
 
         let json = CalcJsonDeserialize::new(engine.calc_manager());
 
@@ -491,18 +482,33 @@ impl ProcessBatch {
                         }
                     }
                 }
-                _ => match engine.balance_cashflow() {
-                    Err(e) => {
-                        BatchUtility::println(format!("Error: {:?}", e), Color::Red);
-                        action_failure += 1;
-                    }
-                    Ok(o) => {
-                        if ProcessBatch::check_action_results(&engine, &action, &o) {
-                            action_success += 1;
-                        } else {
-                            action_failure += 1;
+                _ => {
+                    {
+                        let mgr = engine.calc_mgr();            
+                        if !mgr.list_cashflow().get_element(0) { 
+                            BatchUtility::println(String::from("Cannot get cashflow 0"), Color::Red);
                         }
                     }
+            
+                    if !engine.calc_mgr_mut().list_cashflow_mut().remove() {
+                        BatchUtility::println(String::from("Cannot remove cashflow 0"), Color::Red);
+                    }
+
+                    /* #####
+                    match engine.balance_cashflow() {
+                        Err(e) => {
+                            BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                            action_failure += 1;
+                        }
+                        Ok(o) => {
+                            if ProcessBatch::check_action_results(&engine, &action, &o) {
+                                action_success += 1;
+                            } else {
+                                action_failure += 1;
+                            }
+                        }
+                    }
+                    */
                 },
             }
         }
@@ -712,8 +718,7 @@ impl ProcessBatch {
         index: usize,
         batch_completions: &Arc<Mutex<VecDeque<String>>>,
         action_successes: &Arc<AtomicUsize>,
-        action_failures: &Arc<AtomicUsize>,
-        show_updates: bool,
+        action_failures: &Arc<AtomicUsize>
     ) -> bool {
         if !list_batch.get_element(index) {
             return false;
@@ -739,8 +744,7 @@ impl ProcessBatch {
                 locale,
                 actions,
                 inputs,
-                outputs,
-                show_updates,
+                outputs
             ) {
                 Err(e) => {
                     BatchUtility::println(format!("Error: {:?}", e), Color::Red);

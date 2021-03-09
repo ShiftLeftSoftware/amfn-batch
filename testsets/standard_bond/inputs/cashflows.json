@@ -12,6 +12,174 @@
 					}
 				],
 				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Value~70|Interest~70|SLInterest~70|IntOnInterest~70|Balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Status",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Balance: \" + cashflow(\"StrBal\") +, Interest: \" + formatcurrency(cashflow(\"IntBefore\")) + \"+\" + formatcurrency(cashflow(\"IntAfter\")) + \"=\" + formatcurrency(cashflow(\"IntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Type|Yield|CompInt|SLInt|IntOnInt|Price|IntRate|IntFreq|CoupVal|CoupFirst|CoupLast|CallVal|CallDate|ParVal|MatDate"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CallDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Call date\"~if(am(\"CurFirstPV\", \"Date\") > 0, formatdate(am(\"CurFirstPV\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CallVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Call value\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CompInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compound interest\"~formatcurrency(cashflow(\"IntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupFirst",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "First coupon date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupLast",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Last coupon date\"~if(am(\"PrinLastStat\", \"Date\") > 0, formatdate(am(\"PrinLastStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "CoupVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Coupon value\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Interest frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntOnInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest on interest~ formatcurrency(cashflow(\"IntTotal\")-cashflow(\"SLIntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "MatDate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Maturity date\"~formatdate(if(round(cashflow(\"Balance\")) > 0, cashflow(\"BalDate\"), am(\"PrinLast\", \"Date\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "ParVal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Par value\"~formatcurrency(if(round(cashflow(\"Balance\")) > 0, cashflow(\"Balance\"), am(\"PrinLast\", \"Value\")))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Price",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Price\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "SLInt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Straight-line interest\"~formatcurrency(cashflow(\"SLIntTotal\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Type",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Compute method\"~am(\"IntFirst\", \"Type\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
 				]
 			},
 			"event-list": [

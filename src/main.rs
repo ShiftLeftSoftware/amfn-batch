@@ -37,17 +37,9 @@ pub fn main() {
                 .help("Pause prior to exit")
                 .takes_value(false),
         )
-        .arg(
-            Arg::with_name("updates")
-                .short("u")
-                .long("updates")
-                .help("Show updates")
-                .takes_value(false),
-        )
         .get_matches();
 
     let pause_at_exit = matches.is_present("pause");
-    let show_updates = matches.is_present("updates");
 
     let mut config_names: Vec<&str> = Vec::new();
 
@@ -66,7 +58,7 @@ pub fn main() {
         }
     }
 
-    match ProcessBatch::process_batches(config_names, show_updates) {
+    match ProcessBatch::process_batches(config_names) {
         Err(e) => {
             ProcessBatch::println(format!("Error: {:?}", e), Color::Red);
         }

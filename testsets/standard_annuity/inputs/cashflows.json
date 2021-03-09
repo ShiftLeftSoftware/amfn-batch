@@ -12,6 +12,182 @@
 					}
 				],
 				"descriptor-list": [
+					{
+						"propagate": false,
+						"group": "ColValue",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Custom~Description~~~0~0"
+					},
+					{
+						"propagate": false,
+						"group": "Event",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Type~65|Date~50|Value~70|Periods~50|Frequency~60|End-date~50|Skip-periods~50|Parameter-list~40|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "Amortization",
+						"name": "Columns",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Balance~70|Accrued-balance~70|Description~100"
+					},
+					{
+						"propagate": false,
+						"group": "General",
+						"name": "Summary",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Description|Yield|InitPrem|IntStart|IntRate|IntFreq|PremStart|PremAmt|PremFreq|PremTerm|RenStart|RenRate|RenFreq|DrawStart|DrawAmt|DrawFreq|DrawTerm|FinalBal"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Description",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Description\"~strDescription"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal amount\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal frequency\"~if(am(\"PrinFirstStat\", \"Value\") > 0, am(\"PrinFirstStat\", \"Frequency\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "DrawTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Withdrawal term\"~if(am(\"PrinFirstStat\", \"Date\") > 0, format(datediff(am(\"PrinFirstStat\", \"Date\"), am(\"PrinLastStat\", \"Date\"), am(\"PrinFirstStat\", \"Frequency\"), 1, 1) + 1), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "FinalBal",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "InitPrem",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Initial premium amount\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest frequency\"~am(\"IntFirst\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "IntStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Guaranteed interest date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremAmt",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium amount\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, formatcurrency(am(\"FirstStart=Per prem\", \"Value\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium frequency\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, am(\"FirstStart=Per prem\", \"Frequency\"), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium date\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, formatdate(am(\"FirstStart=Per prem\", \"Date\")), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "PremTerm",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Periodic premium term\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, format(datediff(am(\"FirstStart=Per prem\", \"Date\"), am(\"LastStart=Per prem\", \"Date\"), am(\"FirstStart=Per prem\", \"Frequency\"), 1, 1) + 1), \"None\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenFreq",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "\"Renewal interest frequency\"~am(\"IntLast\", \"Frequency\")"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenRate",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Renewal interest frequency\"~formatnumber(am(\"IntLast\", \"Value\")) + \"%\""
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "RenStart",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Renewal interest date\"~formatdate(am(\"IntLast\", \"Date\"))"
+					},
+					{
+						"propagate": false,
+						"group": "Summary",
+						"name": "Yield",
+						"descriptor-type": "custom",
+						"descriptor-code": "",
+						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+					}
 				]
 			},
 			"event-list": [
