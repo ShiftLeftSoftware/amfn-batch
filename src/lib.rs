@@ -483,18 +483,6 @@ impl ProcessBatch {
                     }
                 }
                 _ => {
-                    {
-                        let mgr = engine.calc_mgr();            
-                        if !mgr.list_cashflow().get_element(0) { 
-                            BatchUtility::println(String::from("Cannot get cashflow 0"), Color::Red);
-                        }
-                    }
-            
-                    if !engine.calc_mgr_mut().list_cashflow_mut().remove() {
-                        BatchUtility::println(String::from("Cannot remove cashflow 0"), Color::Red);
-                    }
-
-                    /* #####
                     match engine.balance_cashflow() {
                         Err(e) => {
                             BatchUtility::println(format!("Error: {:?}", e), Color::Red);
@@ -508,8 +496,34 @@ impl ProcessBatch {
                             }
                         }
                     }
-                    */
-                },
+
+                    let calc_mgr = engine.calc_mgr();
+
+                    let mut list_parameter: Option<&ListParameter> = None;
+                    match calc_mgr.list_cashflow().preferences() {
+                        None => { }
+                        Some(o) => { 
+                            list_parameter = Option::from(o.list_parameter()); 
+                        }
+                    }
+
+                    let status = "\"Balance: \" + cashflow(\"StrBal\") + if(cashflow(\"AccBal\") > 0, \", Accrued: \" + formatcurrency(cashflow(\"AccBal\")), \"\") + \", Prin stats: \" + format(cashflow(\"PrinBefore\")) + \"+\" + format(cashflow(\"PrinAfter\")) + \"=\" + format(cashflow(\"PrinTotal\")) + \", Interest: \" + formatcurrency(cashflow(\"IntBefore\")) + \"+\" + formatcurrency(cashflow(\"IntAfter\")) + \"=\" + formatcurrency(cashflow(\"IntTotal\"))";
+                    
+                    let result_symbol = engine.evaluate_expression(
+                        list_parameter, status, true);
+
+                    match result_symbol.sym_type() {
+                        amfnengine::TokenType::Integer => {
+                            println!("{}", engine.format_integer(result_symbol.sym_integer()));
+                        }
+                        amfnengine::TokenType::Decimal => {
+                            println!("{}", engine.format_decimal(result_symbol.sym_decimal()));
+                        }
+                        _ => {
+                            println!("{}", String::from(result_symbol.sym_string()));
+                        }
+                    }
+                }
             }
         }
 
