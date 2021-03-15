@@ -58,7 +58,7 @@
 						"name": "DrawAmt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Withdrawal amount\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+						"value": "\"Withdrawal amount\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -66,7 +66,7 @@
 						"name": "DrawFreq",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Withdrawal frequency\"~if(am(\"PrinFirstStat\", \"Value\") > 0, am(\"PrinFirstStat\", \"Frequency\"), \"None\")"
+						"value": "\"Withdrawal frequency\"~if(am(\"PrinFirstStat\", \"Value\") > 0, am(\"PrinFirstStat\", \"Frequency\"), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -74,7 +74,7 @@
 						"name": "DrawStart",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Withdrawal date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+						"value": "\"Withdrawal date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -82,7 +82,7 @@
 						"name": "DrawTerm",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Withdrawal term\"~if(am(\"PrinFirstStat\", \"Date\") > 0, format(datediff(am(\"PrinFirstStat\", \"Date\"), am(\"PrinLastStat\", \"Date\"), am(\"PrinFirstStat\", \"Frequency\"), 1, 1) + 1), \"None\")"
+						"value": "\"Withdrawal term\"~if(am(\"PrinFirstStat\", \"Date\") > 0, format(datediff(am(\"PrinFirstStat\", \"Date\"), am(\"PrinLastStat\", \"Date\"), am(\"PrinFirstStat\", \"Frequency\"), 1, 1) + 1), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -90,7 +90,7 @@
 						"name": "FinalBal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
+						"value": "\"Final balance\"~formatcurrency(cashflow(\"AccBal\") + cashflow(\"Balance\"))"
 					},
 					{
 						"propagate": false,
@@ -98,7 +98,7 @@
 						"name": "InitPrem",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Initial premium amount\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+						"value": "\"Initial premium amount\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
 					},
 					{
 						"propagate": false,
@@ -106,7 +106,7 @@
 						"name": "IntFreq",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Guaranteed interest frequency\"~am(\"IntFirst\", \"Frequency\")"
+						"value": "\"Guaranteed interest frequency\"~am(\"IntFirst\", \"Frequency\")"
 					},
 					{
 						"propagate": false,
@@ -114,7 +114,7 @@
 						"name": "IntRate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Guaranteed interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+						"value": "\"Guaranteed interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
 					},
 					{
 						"propagate": false,
@@ -122,7 +122,7 @@
 						"name": "IntStart",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Guaranteed interest date\"~formatdate(am(\"IntFirst\", \"Date\"))"
+						"value": "\"Guaranteed interest date\"~formatdate(am(\"IntFirst\", \"Date\"))"
 					},
 					{
 						"propagate": false,
@@ -130,7 +130,7 @@
 						"name": "PremAmt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Periodic premium amount\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, formatcurrency(am(\"FirstStart=Per prem\", \"Value\")), \"None\")"
+						"value": "\"Periodic premium amount\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, formatcurrency(am(\"FirstStart=Per prem\", \"Value\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -138,7 +138,7 @@
 						"name": "PremFreq",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Periodic premium frequency\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, am(\"FirstStart=Per prem\", \"Frequency\"), \"None\")"
+						"value": "\"Periodic premium frequency\"~if(am(\"FirstStart=Per prem\", \"Value\") > 0, am(\"FirstStart=Per prem\", \"Frequency\"), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -146,7 +146,7 @@
 						"name": "PremStart",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Periodic premium date\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, formatdate(am(\"FirstStart=Per prem\", \"Date\")), \"None\")"
+						"value": "\"Periodic premium date\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, formatdate(am(\"FirstStart=Per prem\", \"Date\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -154,7 +154,7 @@
 						"name": "PremTerm",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Periodic premium term\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, format(datediff(am(\"FirstStart=Per prem\", \"Date\"), am(\"LastStart=Per prem\", \"Date\"), am(\"FirstStart=Per prem\", \"Frequency\"), 1, 1) + 1), \"None\")"
+						"value": "\"Periodic premium term\"~if(am(\"FirstStart=Per prem\", \"Date\") > 0, format(datediff(am(\"FirstStart=Per prem\", \"Date\"), am(\"LastStart=Per prem\", \"Date\"), am(\"FirstStart=Per prem\", \"Frequency\"), 1, 1) + 1), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -170,7 +170,7 @@
 						"name": "RenRate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Renewal interest frequency\"~formatnumber(am(\"IntLast\", \"Value\")) + \"%\""
+						"value": "\"Renewal interest frequency\"~formatnumber(am(\"IntLast\", \"Value\")) + \"%\""
 					},
 					{
 						"propagate": false,
@@ -178,7 +178,7 @@
 						"name": "RenStart",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Renewal interest date\"~formatdate(am(\"IntLast\", \"Date\"))"
+						"value": "\"Renewal interest date\"~formatdate(am(\"IntLast\", \"Date\"))"
 					},
 					{
 						"propagate": false,
@@ -186,7 +186,7 @@
 						"name": "Yield",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+						"value": "\"Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
 					}
 				]
 			},

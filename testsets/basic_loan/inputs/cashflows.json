@@ -26,7 +26,7 @@
 						"name": "APR",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "APR\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+						"value": "\"APR\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
 					},
 					{
 						"propagate": false,
@@ -34,7 +34,7 @@
 						"name": "AmountFin",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Amount financed\"~formatcurrency(cashflow(\"PrinTotalDecr\") - cashflow(\"AuxActiveIncr\") - cashflow(\"AuxPassiveIncr\"))"
+						"value": "\"Amount financed\"~formatcurrency(cashflow(\"PrinTotalDecr\") - cashflow(\"AuxActiveIncr\") - cashflow(\"AuxPassiveIncr\"))"
 					},
 					{
 						"propagate": false,
@@ -50,7 +50,7 @@
 						"name": "CurBal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Current balance\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), formatcurrency(abs(am(\"PrinFirst\", \"Balance\"))))"
+						"value": "\"Current balance\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), formatcurrency(abs(am(\"PrinFirst\", \"Balance\"))))"
 					},
 					{
 						"propagate": false,
@@ -58,7 +58,7 @@
 						"name": "DR",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Daily rate\"~if(am(\"IntFirst\", \"DR\") > 0, formatnumber(am(\"IntFirst\", \"DR\")) +%\", \"Undefined\")"
+						"value": "\"Daily rate\"~if(am(\"IntFirst\", \"DR\") > 0, formatnumber(am(\"IntFirst\", \"DR\")) + \"%\", \"Undefined\")"
 					},
 					{
 						"propagate": false,
@@ -74,7 +74,7 @@
 						"name": "EAR",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Effective rate\"~if(am(\"IntFirst\", \"EAR\") > 0, formatnumber(am(\"IntFirst\", \"EAR\")) + \"%\", \"Undefined\")"
+						"value": "\"Effective rate\"~if(am(\"IntFirst\", \"EAR\") > 0, formatnumber(am(\"IntFirst\", \"EAR\")) + \"%\", \"Undefined\")"
 					},
 					{
 						"propagate": false,
@@ -82,7 +82,7 @@
 						"name": "FinCharge",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Finance charge\"~formatcurrency(cashflow(\"IntTotal\") + cashflow(\"AuxPassiveIncr\"))"
+						"value": "\"Finance charge\"~formatcurrency(cashflow(\"IntTotal\") + cashflow(\"AuxPassiveIncr\"))"
 					},
 					{
 						"propagate": false,
@@ -90,7 +90,7 @@
 						"name": "IntPaidTo",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Int paid to\"~formatdate(if(am(\"CurFirstPV\", \"Date\") > 0, am(\"CurFirstPV\", \"Date\"), am(\"IntFirst\", \"Date\")))"
+						"value": "\"Int paid to\"~formatdate(if(am(\"CurFirstPV\", \"Date\") > 0, am(\"CurFirstPV\", \"Date\"), am(\"IntFirst\", \"Date\")))"
 					},
 					{
 						"propagate": false,
@@ -98,7 +98,7 @@
 						"name": "IntRate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+						"value": "\"Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
 					},
 					{
 						"propagate": false,
@@ -114,7 +114,7 @@
 						"name": "LTV",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "LTV\"~formatnumber(if(am(\"CurFirstPV\", \"Balance\") = 0, 100, round(abs(am(\"CurFirstPV\", \"Balance\") / am(\"PrinFirst\", \"Value\")) * 100))) + \"%\""
+						"value": "\"LTV\"~formatnumber(if(am(\"CurFirstPV\", \"Balance\") = 0, 100, round(abs(am(\"CurFirstPV\", \"Balance\") / am(\"PrinFirst\", \"Value\")) * 100))) + \"%\""
 					},
 					{
 						"propagate": false,
@@ -122,7 +122,7 @@
 						"name": "LastAmt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon amount\", \"Last pymt amt\")~formatcurrency(am(\"PrinLastStat\", \"Value\"))"
+						"value": "\"Last amount\"~if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon amount\", \"Last pymt amt\")~formatcurrency(am(\"PrinLastStat\", \"Value\"))"
 					},
 					{
 						"propagate": false,
@@ -130,7 +130,7 @@
 						"name": "LastDate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon date\", \"Last pymt date\")~formatdate(am(\"PrinLastStat\", \"Date\"))"
+						"value": "\"Last date\"~if(am(\"PrinLastStat\", \"Value\") >= am(\"PrinFirstStat\", \"Value\") * 2, \"Balloon date\", \"Last pymt date\")~formatdate(am(\"PrinLastStat\", \"Date\"))"
 					},
 					{
 						"propagate": false,
@@ -138,7 +138,7 @@
 						"name": "NextPymt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Next pymt due\"~formatdate(am(\"PrinFirstStatPV\", \"Date\"))"
+						"value": "\"Next pymt due\"~formatdate(am(\"PrinFirstStatPV\", \"Date\"))"
 					},
 					{
 						"propagate": false,
@@ -146,7 +146,7 @@
 						"name": "OrigBal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Original balance\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
+						"value": "\"Original balance\"~formatcurrency(am(\"PrinFirst\", \"Value\"))"
 					},
 					{
 						"propagate": false,
@@ -162,7 +162,7 @@
 						"name": "PR",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Periodic rate\"~if(am(\"IntFirst\", \"PR\") > 0, formatnumber(am(\"IntFirst\", \"PR\")) +%\", \"Undefined\")"
+						"value": "\"Periodic rate\"~if(am(\"IntFirst\", \"PR\") > 0, formatnumber(am(\"IntFirst\", \"PR\")) + \"%\", \"Undefined\")"
 					},
 					{
 						"propagate": false,
@@ -178,7 +178,7 @@
 						"name": "PymtAmt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Payment amount\"~formatcurrency(am(\"PrinFirstStat\", \"Value\"))"
+						"value": "\"Payment amount\"~formatcurrency(am(\"PrinFirstStat\", \"Value\"))"
 					},
 					{
 						"propagate": false,
@@ -210,7 +210,7 @@
 						"name": "TotalOfPymts",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Total of payments\"~formatcurrency(cashflow(\"PrinTotalDecr\") + cashflow(\"IntTotal\") - cashflow(\"AuxActiveIncr\"))"
+						"value": "\"Total of payments\"~formatcurrency(cashflow(\"PrinTotalDecr\") + cashflow(\"IntTotal\") - cashflow(\"AuxActiveIncr\"))"
 					},
 					{
 						"propagate": false,

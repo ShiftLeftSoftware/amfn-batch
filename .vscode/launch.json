@@ -10,7 +10,7 @@
             "program": "${workspaceRoot}/target/debug/amfnbatch.exe",
             "args": [
                 "--config",
-                "${workspaceRoot}/testsets/test_batch_variable.json",
+                "${workspaceRoot}/testsets/test_batch_basic.json",
                 "--pause"
             ],
             "stopAtEntry": false,

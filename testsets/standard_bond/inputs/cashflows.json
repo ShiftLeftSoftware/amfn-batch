@@ -58,7 +58,7 @@
 						"name": "CallDate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Call date\"~if(am(\"CurFirstPV\", \"Date\") > 0, formatdate(am(\"CurFirstPV\", \"Date\")), \"None\")"
+						"value": "\"Call date\"~if(am(\"CurFirstPV\", \"Date\") > 0, formatdate(am(\"CurFirstPV\", \"Date\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -66,7 +66,7 @@
 						"name": "CallVal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Call value\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), \"None\")"
+						"value": "\"Call value\"~if(len(am(\"CurFirstPV\", \"StrBal\")) > 0, am(\"CurFirstPV\", \"StrBal\"), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -82,7 +82,7 @@
 						"name": "CoupFirst",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "First coupon date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
+						"value": "\"First coupon date\"~if(am(\"PrinFirstStat\", \"Date\") > 0, formatdate(am(\"PrinFirstStat\", \"Date\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -90,7 +90,7 @@
 						"name": "CoupLast",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Last coupon date\"~if(am(\"PrinLastStat\", \"Date\") > 0, formatdate(am(\"PrinLastStat\", \"Date\")), \"None\")"
+						"value": "\"Last coupon date\"~if(am(\"PrinLastStat\", \"Date\") > 0, formatdate(am(\"PrinLastStat\", \"Date\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -98,7 +98,7 @@
 						"name": "CoupVal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Coupon value\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
+						"value": "\"Coupon value\"~if(am(\"PrinFirstStat\", \"Value\") > 0, formatcurrency(am(\"PrinFirstStat\", \"Value\")), \"None\")"
 					},
 					{
 						"propagate": false,
@@ -122,7 +122,7 @@
 						"name": "IntOnInt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Interest on interest~ formatcurrency(cashflow(\"IntTotal\")-cashflow(\"SLIntTotal\"))"
+						"value": "\"Interest on interest\"~formatcurrency(cashflow(\"IntTotal\")-cashflow(\"SLIntTotal\"))"
 					},
 					{
 						"propagate": false,
@@ -130,7 +130,7 @@
 						"name": "IntRate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
+						"value": "\"Interest rate\"~formatnumber(am(\"IntFirst\", \"Value\")) + \"%\""
 					},
 					{
 						"propagate": false,
@@ -138,7 +138,7 @@
 						"name": "MatDate",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Maturity date\"~formatdate(if(round(cashflow(\"Balance\")) > 0, cashflow(\"BalDate\"), am(\"PrinLast\", \"Date\")))"
+						"value": "\"Maturity date\"~formatdate(if(round(cashflow(\"Balance\")) > 0, cashflow(\"BalDate\"), am(\"PrinLast\", \"Date\")))"
 					},
 					{
 						"propagate": false,
@@ -146,7 +146,7 @@
 						"name": "ParVal",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Par value\"~formatcurrency(if(round(cashflow(\"Balance\")) > 0, cashflow(\"Balance\"), am(\"PrinLast\", \"Value\")))"
+						"value": "\"Par value\"~formatcurrency(if(round(cashflow(\"Balance\")) > 0, cashflow(\"Balance\"), am(\"PrinLast\", \"Value\")))"
 					},
 					{
 						"propagate": false,
@@ -162,7 +162,7 @@
 						"name": "SLInt",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Straight-line interest\"~formatcurrency(cashflow(\"SLIntTotal\"))"
+						"value": "\"Straight-line interest\"~formatcurrency(cashflow(\"SLIntTotal\"))"
 					},
 					{
 						"propagate": false,
@@ -178,7 +178,7 @@
 						"name": "Yield",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
+						"value": "\"Yield\"~if(decYield > 0, formatnumber(decYield) + \"%\", \"Undefined\")"
 					}
 				]
 			},
