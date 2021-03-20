@@ -3,15 +3,25 @@
 		{
 			"locale-str": "en-US",
 			"currency-code": "USD",
-			"format": {
-				"date-regex": "(?P<year>\\d{4})-(?P<month>\\d{2})-(?P<day>\\d{2})",
-				"date-replace": "$year-$month-$day",
-				"integer-regex": "(?P<num>\\d)",
-				"integer-replace": "$num",
-				"decimal-regex": "(?P<num>\\d)\\.(?P<dec>\\d)",
-				"decimal-replace": "$num.$dec",
-				"currency-regex": "(?P<num>\\d)\\.(?P<dec>\\d)",
-				"currency-replace": "$num.$dec"
+			"format-in": {
+				"date-regex": "(\\d{1,2})/(\\d{1,2})/(\\d{2,4})",
+				"date-replace": "$3-$1-$2",
+				"integer-regex": "(\\d)",
+				"integer-replace": "$1",
+				"decimal-regex": "(\\d)\\.(\\d)",
+				"decimal-replace": "$1.$2",
+				"currency-regex": "(\\d)\\.(\\d)",
+				"currency-replace": "$1.$2"
+			},
+			"format-out": {
+				"date-regex": "(\\d{4})-(\\d{2})-(\\d{2})",
+				"date-replace": "$2/$3/$1",
+				"integer-regex": "(\\d)",
+				"integer-replace": "$1",
+				"decimal-regex": "(\\d)\\.(\\d)",
+				"decimal-replace": "$1.$2",
+				"currency-regex": "(\\d)\\.(\\d)",
+				"currency-replace": "$1.$2"
 			},
 			"resources": [
 				{ "key": "ButtonBar_Button_Calculate", "text": "Calculate" },

@@ -1,0 +1,33 @@
+{
+    "preferences": {
+        "locale": "en-US",
+        "default-encoding": "UTF-8",
+        "decimal-digits": 2,
+        "descriptor-list": [
+            {
+                "propagate": false,
+                "group": "Chart",
+                "name": "BalAll",
+                "descriptor-type": "custom",
+                "descriptor-code": "",
+                "value": "Balance for all opened cash flows~1|Balance~0~0"
+            },
+            {
+                "propagate": false,
+                "group": "Chart",
+                "name": "BalInt",
+                "descriptor-type": "custom",
+                "descriptor-code": "",
+                "value": "Balance and accumulated interest~0|Balance~0~0|Interest~0~1"
+            },
+            {
+                "propagate": false,
+                "group": "Chart",
+                "name": "IntOnly",
+                "descriptor-type": "custom",
+                "descriptor-code": "",
+                "value": "Non-accumulated interest~0|Interest~1~0"
+            }
+        ]
+    }
+}
