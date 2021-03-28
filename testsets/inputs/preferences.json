@@ -1,7 +1,7 @@
 {
     "preferences": {
         "locale": "en-US",
-        "default-encoding": "UTF-8",
+        "default-encoding": "utf-8",
         "decimal-digits": 2,
         "descriptor-list": [
             {

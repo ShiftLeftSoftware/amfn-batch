@@ -50,9 +50,7 @@ impl ProcessBatch {
     ///
     /// * The batch result or an error code.
 
-    pub fn process_batches(
-        config_names: Vec<&str>
-    ) -> Result<ElemBatchResult, crate::ErrorType> {
+    pub fn process_batches(config_names: Vec<&str>) -> Result<ElemBatchResult, crate::ErrorType> {
         let mut total_batches: usize = 0;
         let mut total_successes: usize = 0;
         let mut total_failures: usize = 0;
@@ -144,7 +142,7 @@ impl ProcessBatch {
                     index,
                     &batch_completions,
                     &action_successes,
-                    &action_failures
+                    &action_failures,
                 ) {
                     break;
                 }
@@ -184,7 +182,7 @@ impl ProcessBatch {
                         index,
                         &batch_completions,
                         &action_successes,
-                        &action_failures
+                        &action_failures,
                     ) {
                         break;
                     }
@@ -240,7 +238,7 @@ impl ProcessBatch {
         locale: String,
         actions: Vec<ElemBatchAction>,
         inputs: Vec<ElemBatchIO>,
-        outputs: Vec<ElemBatchIO>
+        outputs: Vec<ElemBatchIO>,
     ) -> Result<ElemBatchResult, crate::ErrorType> {
         if group.is_empty() {
             BatchUtility::println(format!("Processing: {}", name), Color::White);
@@ -482,21 +480,19 @@ impl ProcessBatch {
                         }
                     }
                 }
-                _ => {
-                    match engine.balance_cashflow() {
-                        Err(e) => {
-                            BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                _ => match engine.balance_cashflow() {
+                    Err(e) => {
+                        BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                        action_failure += 1;
+                    }
+                    Ok(o) => {
+                        if ProcessBatch::check_action_results(&engine, &action, &o) {
+                            action_success += 1;
+                        } else {
                             action_failure += 1;
                         }
-                        Ok(o) => {
-                            if ProcessBatch::check_action_results(&engine, &action, &o) {
-                                action_success += 1;
-                            } else {
-                                action_failure += 1;
-                            }
-                        }
                     }
-                }
+                },
             }
         }
 
@@ -705,7 +701,7 @@ impl ProcessBatch {
         index: usize,
         batch_completions: &Arc<Mutex<VecDeque<String>>>,
         action_successes: &Arc<AtomicUsize>,
-        action_failures: &Arc<AtomicUsize>
+        action_failures: &Arc<AtomicUsize>,
     ) -> bool {
         if !list_batch.get_element(index) {
             return false;
@@ -725,14 +721,7 @@ impl ProcessBatch {
         std::thread::spawn(move || {
             let tgroup = String::from(group.as_str());
 
-            match ProcessBatch::execute_batch(
-                name,
-                group,
-                locale,
-                actions,
-                inputs,
-                outputs
-            ) {
+            match ProcessBatch::execute_batch(name, group, locale, actions, inputs, outputs) {
                 Err(e) => {
                     BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                 }
