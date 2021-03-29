@@ -7,26 +7,34 @@
             {
                 "propagate": false,
                 "group": "Chart",
-                "name": "BalAll",
-                "descriptor-type": "custom",
-                "descriptor-code": "",
-                "value": "Balance for all opened cash flows~1|Balance~0~0"
-            },
-            {
-                "propagate": false,
-                "group": "Chart",
                 "name": "BalInt",
                 "descriptor-type": "custom",
                 "descriptor-code": "",
-                "value": "Balance and accumulated interest~0|Balance~0~0|Interest~0~1"
+                "value": "Balance and accumulated interest~0~2~0|Balance~0|Interest~1"
             },
             {
                 "propagate": false,
                 "group": "Chart",
-                "name": "IntOnly",
+                "name": "ValIntPrin",
                 "descriptor-type": "custom",
                 "descriptor-code": "",
-                "value": "Non-accumulated interest~0|Interest~1~0"
+                "value": "Value to interest vs principal~0~4~0|Value-to-interest~1|Value-to-principal~1"
+            },
+            {
+                "propagate": false,
+                "group": "Chart",
+                "name": "BalAll",
+                "descriptor-type": "custom",
+                "descriptor-code": "",
+                "value": "Balance for all opened cashflows~1~0~0|Balance~0"
+            },
+            {
+                "propagate": false,
+                "group": "Chart",
+                "name": "IntAll",
+                "descriptor-type": "custom",
+                "descriptor-code": "",
+                "value": "Interest for all opened cashflows~1~6~0|Interest~0"
             }
         ]
     }
