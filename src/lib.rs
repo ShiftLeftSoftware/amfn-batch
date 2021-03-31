@@ -538,7 +538,7 @@ impl ProcessBatch {
                     BatchUtility::println(
                         format!(
                             "Test Success: Balance = {}",
-                            engine.format_currency(balance_result.balance())
+                            engine.format_currency_out(balance_result.balance())
                         ),
                         Color::Green,
                     );
@@ -546,7 +546,7 @@ impl ProcessBatch {
                     BatchUtility::println(
                         format!(
                             "Test Failure: Balance = {}",
-                            engine.format_currency(balance_result.balance())
+                            engine.format_currency_out(balance_result.balance())
                         ),
                         Color::Red,
                     );
@@ -558,7 +558,7 @@ impl ProcessBatch {
                     BatchUtility::println(
                         format!(
                             "Test Success: Balance = {}",
-                            engine.format_decimal(balance_result.last_yield())
+                            engine.format_decimal_out(balance_result.last_yield())
                         ),
                         Color::Green,
                     );
@@ -566,7 +566,7 @@ impl ProcessBatch {
                     BatchUtility::println(
                         format!(
                             "Test Failure: Balance = {}",
-                            engine.format_decimal(balance_result.last_yield())
+                            engine.format_decimal_out(balance_result.last_yield())
                         ),
                         Color::Red,
                     );
@@ -578,7 +578,7 @@ impl ProcessBatch {
                     BatchUtility::println(
                         format!(
                             "Success: Balance = {}",
-                            engine.format_currency(balance_result.balance())
+                            engine.format_currency_out(balance_result.balance())
                         ),
                         Color::Green,
                     );
