@@ -480,16 +480,18 @@ impl ProcessBatch {
                         }
                     }
                 }
-                _ => match engine.balance_cashflow() {
-                    Err(e) => {
-                        BatchUtility::println(format!("Error: {:?}", e), Color::Red);
-                        action_failure += 1;
-                    }
-                    Ok(o) => {
-                        if ProcessBatch::check_action_results(&engine, &action, &o) {
-                            action_success += 1;
-                        } else {
+                _ => {
+                    match engine.balance_cashflow() {
+                        Err(e) => {
+                            BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                             action_failure += 1;
+                        }
+                        Ok(o) => {
+                            if ProcessBatch::check_action_results(&engine, &action, &o) {
+                                action_success += 1;
+                            } else {
+                                action_failure += 1;
+                            }
                         }
                     }
                 },
@@ -554,19 +556,19 @@ impl ProcessBatch {
                 }
             }
             crate::TestType::Yield => {
-                if engine.round_decimal(balance_result.last_yield()) == action.test_value() {
+                if engine.round_decimal(balance_result.result_yield()) == action.test_value() {
                     BatchUtility::println(
                         format!(
-                            "Test Success: Balance = {}",
-                            engine.format_decimal_out(balance_result.last_yield())
+                            "Test Success: Yield = {}",
+                            engine.format_decimal_out(balance_result.result_yield())
                         ),
                         Color::Green,
                     );
                 } else {
                     BatchUtility::println(
                         format!(
-                            "Test Failure: Balance = {}",
-                            engine.format_decimal_out(balance_result.last_yield())
+                            "Test Failure: Yield = {}",
+                            engine.format_decimal_out(balance_result.result_yield())
                         ),
                         Color::Red,
                     );
