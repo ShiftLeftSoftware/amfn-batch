@@ -465,17 +465,44 @@ impl ProcessBatch {
                     match engine.create_cashflow_from_template_group(
                         action.template_group(),
                         action.cashflow_new(),
-                        "",
+                        action.template_group(),
                     ) {
                         Err(e) => {
                             BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                             action_failure += 1;
                         }
                         Ok(o) => {
-                            if ProcessBatch::check_action_results(&engine, &action, &o) {
-                                action_success += 1;
-                            } else {
+                            if !engine.calc_mgr().list_template_group().get_element_by_group(action.template_group(), true) {
+                                BatchUtility::println(String::from("Cannot find template group"), Color::Red);
                                 action_failure += 1;
+                            } else {
+                                let mut names: Vec<String> = Vec::new();
+
+                                {
+                                    let calc_mgr = engine.calc_mgr();
+                                    let list_template_event = calc_mgr.list_template_group().list_template_event();                                    
+                                    let mut index: usize = 0;
+                                    loop {
+                                        if !list_template_event.get_element(index) { break; }
+                                        names.push(String::from(list_template_event.name()));
+                                        index += 1;
+                                    }
+                                }
+
+                                for name in names {
+                                    match engine.create_template_events(action.template_group(), name.as_str(), 0) {
+                                        Err(_e) => { 
+                                            BatchUtility::println(String::from("Cannot create template events"), Color::Red);
+                                        }
+                                        Ok(_o) => { }
+                                    }
+                                }
+
+                                if ProcessBatch::check_action_results(&engine, &action, &o) {
+                                    action_success += 1;
+                                } else {
+                                    action_failure += 1;
+                                }
                             }
                         }
                     }

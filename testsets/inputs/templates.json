@@ -264,7 +264,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+									"value": "\"Stat \" + strName + if(intFinal, \" Final\", \"\")"
 								}
 							]
 						}
@@ -642,7 +642,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+									"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
 								}
 							],
 							"event-next-name": "Periodic premium"
@@ -813,7 +813,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Cur\" + if(intPassive, \"\", \"Act\") + if(intPresent, \"PV\", \"\")"
+									"value": "\"Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \" PV\", \"\")"
 								}
 							]
 						}
@@ -1275,7 +1275,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+									"value": "\"Stat \" + strName + if(intFinal, \" Final\", \"\")"
 								}
 							]
 						}
@@ -1489,7 +1489,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Int \" + strDayCount + \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
+									"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
 								}
 							],
 							"event-next-name": "Fixed coupon"
@@ -2067,7 +2067,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+									"value": "\"Stat \" + strName + if(intFinal, \" Final\", \"\")"
 								}
 							]
 						}
@@ -2219,7 +2219,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "\"Init Inv \" + if(intPrinFirst, \" First\", \"\")"
+									"value": "\"Init Inv\" + if(intPrinFirst, \" First\", \"\")"
 								}
 							],
 							"event-next-name": "Interest rate"
@@ -2260,7 +2260,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+									"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
 								}
 							],
 							"event-next-name": "Normal invest"
@@ -2303,7 +2303,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "\"Invest \" + if(intPrinFirst, \" First\", \"\")"
+									"value": "\"Invest\" + if(intPrinFirst, \" First\", \"\")"
 								}
 							],
 							"event-next-name": "Normal return"
@@ -2430,7 +2430,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Cur\" + if(intPassive, \"\", \"Act\") + if(intPresent, \"PV\", \"\")"
+									"value": "\"Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \" PV\", \"\")"
 								}
 							]
 						}
@@ -2873,7 +2873,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Stat \" + strName + if(intFinal, \"Final\", \"\")"
+									"value": "\"Stat \" + strName + if(intFinal, \" Final\", \"\")"
 								}
 							]
 						}
@@ -3112,7 +3112,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+									"value": "\"Int \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
 								}
 							],
 							"event-next-name": "Normal payment"
@@ -3181,7 +3181,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "IntARM \" + strMethod + \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \"Rnd\")"
+									"value": "\"IntARM \" + strMethod + \" \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")"
 								}
 							],
 							"event-next-name": "Normal payment"
@@ -3311,7 +3311,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "\"Pymt \" + if(intPrinFirst, \"First\", \"\")"
+									"value": "\"Pymt\" + if(intPrinFirst, \" First\", \"\")"
 								}
 							],
 							"event-next-name": "Normal payment"
@@ -3377,7 +3377,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "\"Pymt \" + if(intPrinFirst, \" First\", \"\")"
+									"value": "\"Pymt\" + if(intPrinFirst, \" First\", \"\")"
 								}
 							],
 							"event-next-name": "Normal payment"
@@ -3518,7 +3518,7 @@
 									"name": "EventType",
 									"descriptor-type": "custom",
 									"descriptor-code": "",
-									"value": "Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \"PV\", \"\")"
+									"value": "\"Cur\" + if(intPassive, \"\", \" Act\") + if(intPresent, \" PV\", \"\")"
 								}
 							]
 						}

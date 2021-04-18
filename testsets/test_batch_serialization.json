@@ -3,7 +3,7 @@
 	"batches": [
 		{
 			"name": "Test Batch Standard Loan Serialization Create",
-      "group": "Standard Loan",
+            "group": "Standard Loan",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -26,7 +26,7 @@
 		},
 		{
 			"name": "Test Batch Standard Loan Serialization Balance",
-      "group": "Standard Loan",
+            "group": "Standard Loan",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -56,7 +56,7 @@
 		},
 		{
 			"name": "Test Batch Bi-Weekly Loan Serialization Create",
-      "group": "Bi-Weekly Loan",
+            "group": "Bi-Weekly Loan",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -79,7 +79,7 @@
 		},
 		{
 			"name": "Test Batch Bi-Weekly Loan Serialization Balance",
-      "group": "Bi-Weekly Loan",
+            "group": "Bi-Weekly Loan",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -109,7 +109,7 @@
 		},
 		{
 			"name": "Test Batch Standard Cashflow Serialization Create",
-      "group": "Standard Cashflow",
+            "group": "Standard Cashflow",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -132,7 +132,7 @@
 		},
 		{
 			"name": "Test Batch Standard Cashflow Serialization Balance",
-      "group": "Standard Cashflow",
+            "group": "Standard Cashflow",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -162,7 +162,7 @@
 		},
 		{
 			"name": "Test Batch Standard Annuity Serialization Create",
-      "group": "Standard Annuity",
+            "group": "Standard Annuity",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -185,7 +185,7 @@
 		},
 		{
 			"name": "Test Batch Standard Annuity Serialization Balance",
-      "group": "Standard Annuity",
+            "group": "Standard Annuity",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -215,7 +215,7 @@
 		},
 		{
 			"name": "Test Batch Standard Bond Serialization Create",
-      "group": "Standard Bond",
+            "group": "Standard Bond",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -238,7 +238,7 @@
 		},
 		{
 			"name": "Test Batch Standard Bond Serialization Balance",
-      "group": "Standard Bond",
+            "group": "Standard Bond",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -268,7 +268,7 @@
 		},
 		{
 			"name": "Test Batch Standard Investment Serialization Create",
-      "group": "Standard Investment",
+            "group": "Standard Investment",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [
@@ -291,7 +291,7 @@
 		},
 		{
 			"name": "Test Batch Standard Investment Serialization Balance",
-      "group": "Standard Investment",
+            "group": "Standard Investment",
 			"locale": "en-US",
 			"enabled": true,
 			"inputs": [

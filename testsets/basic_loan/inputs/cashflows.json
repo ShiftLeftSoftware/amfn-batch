@@ -3,7 +3,7 @@
 		{
 			"name": "Basic_loan",
 			"preferences": {
-				"group": "Basic loan",
+				"group": "Standard loan",
 				"parameter-list": [
 					{
 						"name": "strDescription",

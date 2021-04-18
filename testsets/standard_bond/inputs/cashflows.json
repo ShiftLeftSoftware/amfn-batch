@@ -251,7 +251,7 @@
 							"name": "EventType",
 							"descriptor-type": "custom",
 							"descriptor-code": "",
-							"value": "\"Int \" + strDayCount + \" \" + format(intDaysInYear) + if(intRound, \" Rnd\", \"\")",
+							"value": "\"Int \" + strDayCount + \" \" + format(intDaysInYear) + if(strRound = \"none\", \"\", \" Rnd\")",
 							"event-index": 1
 						}
 					],
