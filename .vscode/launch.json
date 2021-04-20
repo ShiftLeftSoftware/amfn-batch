@@ -8,7 +8,7 @@
             "program": "${workspaceRoot}/target/debug/amfnbatch.exe",
             "args": [
                 "--config",
-                "${workspaceRoot}/testsets/test_batch_basic.json",
+                "${workspaceRoot}/testsets/test_batch_multiple.json",
                 "--pause"
             ],
             "stopAtEntry": false,

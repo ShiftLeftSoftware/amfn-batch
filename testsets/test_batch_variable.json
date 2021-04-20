@@ -8,7 +8,7 @@
 			"inputs": [
 				{
 					"io-type": "file",
-					"location": "testsets/inputs/locales.json"
+					"location": "testsets/inputs/en-us/locales.json"
 				},
 				{
 					"io-type": "file",
@@ -37,7 +37,7 @@
 			"inputs": [
 				{
 					"io-type": "file",
-					"location": "testsets/inputs/locales.json"
+					"location": "testsets/inputs/en-us/locales.json"
 				},
 				{
 					"io-type": "file",
