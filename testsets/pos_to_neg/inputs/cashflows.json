@@ -3,6 +3,7 @@
 		{
 			"name": "Positive to Negative",
 			"preferences": {
+                "locale": "en-US",
 				"group": "Standard investment",
 				"parameter-list": [
 					{
@@ -34,7 +35,7 @@
 						"name": "Columns",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Sequence~30|Type~65|Date~50|Decrease~70|Increase~70|Interest~70|Balance~70|Accrued-balance~70|Description~100"
+						"value": "Sequence~30|Type~65|Date~50||Decrease~70|Increase~70|Periods~50|Interest~70||Balance~70|Accrued-balance~70|Description~100"
 					},
 					{
 						"propagate": false,

@@ -3,6 +3,7 @@
 		{
 			"name": "Standard bond",
 			"preferences": {
+                "locale": "en-US",
 				"group": "Standard bond",
 				"parameter-list": [
 					{
@@ -34,7 +35,7 @@
 						"name": "Columns",
 						"descriptor-type": "custom",
 						"descriptor-code": "",
-						"value": "Sequence~30|Type~65|Date~50|Value~70|Interest~70|SLInterest~70|IntOnInterest~70|Balance~70|Description~100"
+						"value": "Sequence~30|Type~65|Date~50|Periods~50|Value~70|Interest~70|SLInterest~70|IntOnInterest~70|Balance~70|Description~100"
 					},
 					{
 						"propagate": false,

@@ -1,6 +1,6 @@
 [package]
 name = "amfnbatch"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["ShiftLeft Software"]
 description = "Amortization Functions (AmFn) Batch Process"
 homepage = "https://shiftleftsoftware.com"
@@ -25,7 +25,7 @@ clap = "~2.33"
 rust_decimal = "~1.10"
 json = "~0.12"
 colored = "~2.0"
-amfnengine = { path = "../amfn-engine", version = "~0.2" }
+amfnengine = { path = "../amfn-engine", version = "~0.3" }
 
 [profile.release]
 lto = true

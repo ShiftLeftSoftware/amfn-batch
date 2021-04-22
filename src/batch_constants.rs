@@ -7,5 +7,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+/// Version message. 
+pub const APP_VERSION: Option<&'static str> = option_env!("CARGO_PKG_VERSION");
+
 /// Thread sleep delay in millis.
 pub const THREAD_SLEEP_MILLIS: u64 = 200;

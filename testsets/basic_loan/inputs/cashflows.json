@@ -3,6 +3,7 @@
 		{
 			"name": "Basic_loan",
 			"preferences": {
+                "locale": "en-US",
 				"group": "Standard loan",
 				"parameter-list": [
 					{

@@ -15,7 +15,6 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::{Arc, Mutex};
 
 use colored::*;
-use rust_decimal::prelude::*;
 
 use amfnengine::core::*;
 use amfnengine::engine::*;
@@ -54,6 +53,16 @@ impl ProcessBatch {
         let mut total_batches: usize = 0;
         let mut total_successes: usize = 0;
         let mut total_failures: usize = 0;
+
+        match APP_VERSION {
+            None => { }
+            Some(o) => {
+                BatchUtility::println(
+                    format!("AmFn Batch Processing: {}", o),
+                    Color::White,
+                );
+            }
+        }
 
         for config_name in config_names {
             BatchUtility::println(
@@ -279,6 +288,16 @@ impl ProcessBatch {
 
         engine.init_engine(locale.as_str());
 
+        match amfnengine::APP_VERSION {
+            None => { }
+            Some(o) => {
+                BatchUtility::println(
+                    format!("AmFn Engine: {}", o),
+                    Color::White,
+                );
+            }
+        }
+
         for action in actions {
             if action.action() != crate::ActionType::TemplateCashflow {
                 if !action.cashflow_name().is_empty() {
@@ -338,7 +357,7 @@ impl ProcessBatch {
             }
 
             match action.action() {
-                crate::ActionType::CalcValue => match engine.calculate_value(dec!(0.0)) {
+                crate::ActionType::CalcValue => match engine.calculate_value() {
                     Err(e) => {
                         BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                         action_failure += 1;
@@ -351,7 +370,7 @@ impl ProcessBatch {
                         }
                     }
                 },
-                crate::ActionType::CalcPeriods => match engine.calculate_periods(dec!(0.0)) {
+                crate::ActionType::CalcPeriods => match engine.calculate_periods() {
                     Err(e) => {
                         BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                         action_failure += 1;
@@ -364,7 +383,7 @@ impl ProcessBatch {
                         }
                     }
                 },
-                crate::ActionType::CalcYield => match engine.calculate_yield(dec!(0.0)) {
+                crate::ActionType::CalcYield => match engine.calculate_yield() {
                     Err(e) => {
                         BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                         action_failure += 1;
@@ -521,7 +540,7 @@ impl ProcessBatch {
                             }
                         }
                     }
-                },
+                }
             }
         }
 

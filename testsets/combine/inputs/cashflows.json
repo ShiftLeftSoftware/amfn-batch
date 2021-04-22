@@ -3,6 +3,7 @@
 		{
 			"name": "Cashflow 1",
 			"preferences": {
+                "locale": "en-US",
 				"group": "Standard loan",
 				"parameter-list": [
 					{
@@ -172,6 +173,7 @@
 		{
 			"name": "Cashflow 2",
 			"preferences": {
+                "locale": "en-US",
 				"group": "Standard loan",
 				"parameter-list": [
 					{
