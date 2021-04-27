@@ -282,6 +282,7 @@
 						"interest-change": {
 							"interest-method": "actuarial",
 							"day-count-basis": "periodic",
+                            "round-balance": "bankers",
 							"days-in-year": 360,
 							"round-decimal-digits": "0"
 						}

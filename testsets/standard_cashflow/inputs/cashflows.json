@@ -1,7 +1,7 @@
 {
 	"cashflows": [
 		{
-			"name": "Standard cash flow",
+			"name": "Standard cashflow",
 			"preferences": {
                 "locale": "en-US",
 				"group": "Standard loan",
