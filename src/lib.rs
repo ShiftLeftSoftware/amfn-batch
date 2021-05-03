@@ -55,12 +55,9 @@ impl ProcessBatch {
         let mut total_failures: usize = 0;
 
         match APP_VERSION {
-            None => { }
+            None => {}
             Some(o) => {
-                BatchUtility::println(
-                    format!("AmFn Batch Processing: {}", o),
-                    Color::White,
-                );
+                BatchUtility::println(format!("AmFn Batch Processing: {}", o), Color::White);
             }
         }
 
@@ -289,12 +286,9 @@ impl ProcessBatch {
         engine.init_engine(locale.as_str());
 
         match amfnengine::APP_VERSION {
-            None => { }
+            None => {}
             Some(o) => {
-                BatchUtility::println(
-                    format!("AmFn Engine: {}", o),
-                    Color::White,
-                );
+                BatchUtility::println(format!("AmFn Engine: {}", o), Color::White);
             }
         }
 
@@ -491,29 +485,46 @@ impl ProcessBatch {
                             action_failure += 1;
                         }
                         Ok(o) => {
-                            if !engine.calc_mgr().list_template_group().get_element_by_group(action.template_group(), true) {
-                                BatchUtility::println(String::from("Cannot find template group"), Color::Red);
+                            if !engine
+                                .calc_mgr()
+                                .list_template_group()
+                                .get_element_by_group(action.template_group(), true)
+                            {
+                                BatchUtility::println(
+                                    String::from("Cannot find template group"),
+                                    Color::Red,
+                                );
                                 action_failure += 1;
                             } else {
                                 let mut names: Vec<String> = Vec::new();
 
                                 {
                                     let calc_mgr = engine.calc_mgr();
-                                    let list_template_event = calc_mgr.list_template_group().list_template_event();                                    
+                                    let list_template_event =
+                                        calc_mgr.list_template_group().list_template_event();
                                     let mut index: usize = 0;
                                     loop {
-                                        if !list_template_event.get_element(index) { break; }
+                                        if !list_template_event.get_element(index) {
+                                            break;
+                                        }
                                         names.push(String::from(list_template_event.name()));
                                         index += 1;
                                     }
                                 }
 
                                 for name in names {
-                                    match engine.create_template_events(action.template_group(), name.as_str(), 0) {
-                                        Err(_e) => { 
-                                            BatchUtility::println(String::from("Cannot create template events"), Color::Red);
+                                    match engine.create_template_events(
+                                        action.template_group(),
+                                        name.as_str(),
+                                        0,
+                                    ) {
+                                        Err(_e) => {
+                                            BatchUtility::println(
+                                                String::from("Cannot create template events"),
+                                                Color::Red,
+                                            );
                                         }
-                                        Ok(_o) => { }
+                                        Ok(_o) => {}
                                     }
                                 }
 
@@ -526,21 +537,19 @@ impl ProcessBatch {
                         }
                     }
                 }
-                _ => {
-                    match engine.balance_cashflow() {
-                        Err(e) => {
-                            BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                _ => match engine.balance_cashflow() {
+                    Err(e) => {
+                        BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                        action_failure += 1;
+                    }
+                    Ok(o) => {
+                        if ProcessBatch::check_action_results(&engine, &action, &o) {
+                            action_success += 1;
+                        } else {
                             action_failure += 1;
                         }
-                        Ok(o) => {
-                            if ProcessBatch::check_action_results(&engine, &action, &o) {
-                                action_success += 1;
-                            } else {
-                                action_failure += 1;
-                            }
-                        }
                     }
-                }
+                },
             }
         }
 

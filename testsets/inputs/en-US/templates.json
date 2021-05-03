@@ -305,6 +305,8 @@
 							"parameter-list": [
 								{
 									"name": "decSurrender",
+                                    "label": "Surrender",
+                                    "description": "The cash value of the policy (surrender value).",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								}
@@ -439,6 +441,8 @@
 							"parameter-list": [
 								{
 									"name": "decWithdrawal",
+                                    "label": "Withdrawal",
+                                    "description": "The fixed surrender withdrawal value.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								}
@@ -489,11 +493,15 @@
 							"parameter-list": [
 								{
 									"name": "decGradPercent",
+                                    "label": "Premium percent",
+                                    "description": "The graduated premium percent.",
 									"parameter-type": "decimal",
 									"value": "10.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -544,11 +552,15 @@
 							"parameter-list": [
 								{
 									"name": "decGradPercent",
+                                    "label": "Withdrawal percent",
+                                    "description": "The graduated withdrawal percent.",
 									"parameter-type": "decimal",
 									"value": "10.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -853,11 +865,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Premium amount",
+                                    "description": "The step premium amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -908,11 +924,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Withdrawal amount",
+                                    "description": "The step withdrawal amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -1661,11 +1681,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Coupon amount",
+                                    "description": "The step coupon amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -2109,11 +2133,15 @@
 							"parameter-list": [
 								{
 									"name": "decGradPercent",
+                                    "label": "Investment percent",
+                                    "description": "The graduated investment percent.",
 									"parameter-type": "decimal",
 									"value": "10.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -2164,11 +2192,15 @@
 							"parameter-list": [
 								{
 									"name": "decGradPercent",
+                                    "label": "Return percent",
+                                    "description": "The graduated return percent.",
 									"parameter-type": "decimal",
 									"value": "10.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -2472,11 +2504,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Investment amount",
+                                    "description": "The step investment amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -2527,11 +2563,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Return amount",
+                                    "description": "The step return amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -2917,11 +2957,15 @@
 							"parameter-list": [
 								{
 									"name": "decExistingBal",
+                                    "label": "Balance amount",
+                                    "description": "The fixed existing balance amount.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decExistingRate",
+                                    "label": "Rate percent",
+                                    "description": "The fixed existing rate percent.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								}
@@ -3016,11 +3060,15 @@
 							"parameter-list": [
 								{
 									"name": "decGradPercent",
+                                    "label": "Payment percent",
+                                    "description": "The graduated payment percent.",
 									"parameter-type": "decimal",
 									"value": "10.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
@@ -3154,26 +3202,36 @@
 							"parameter-list": [
 								{
 									"name": "decMargin",
+                                    "label": "Margin",
+                                    "description": "The number of percentage points added to the index in Value column after the initial rate period ends.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decAdjustCapPlus",
+                                    "label": "Adjust cap plus",
+                                    "description": "How much the interest rate can increase in the adjustment periods that follow.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decAdjustCapMinus",
+                                    "label": "Adjust cap minus",
+                                    "description": "How much the interest rate can decrease in the adjustment periods that follow.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decLifeCapPlus",
+                                    "label": "Lifetime cap plus",
+                                    "description": "How much the interest rate can increase over the life of the loan.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decLifeCapMinus",
+                                    "label": "Lifetime cap minus",
+                                    "description": "How much the interest rate can decrease over the life of the loan.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								}
@@ -3355,21 +3413,29 @@
 							"parameter-list": [
 								{
 									"name": "decAddAmount",
+                                    "label": "Additional amount",
+                                    "description": "An additional amount that is added to the normal payment.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "decBumpAmount",
+                                    "label": "Bump amount",
+                                    "description": "An amount that is added to the normal payment depending on the bump periods.",
 									"parameter-type": "decimal",
 									"value": "0.0"
 								},
 								{
 									"name": "intPeriodsPerBump",
+                                    "label": "Periods between bumps",
+                                    "description": "The number of normal payment periods between each bump payment.",
 									"parameter-type": "integer",
 									"value": "0"
 								},
 								{
 									"name": "intPeriodsUntilBump",
+                                    "label": "Periods until first bump",
+                                    "description": "The number of normal payment periods until the first bump payment.",
 									"parameter-type": "integer",
 									"value": "0"
 								}
@@ -3561,11 +3627,15 @@
 							"parameter-list": [
 								{
 									"name": "decStepAmount",
+                                    "label": "Payment amount",
+                                    "description": "The step payment amount.",
 									"parameter-type": "decimal",
 									"value": "100.0"
 								},
 								{
 									"name": "intPeriodsPerStep",
+                                    "label": "Periods per step",
+                                    "description": "The number of periods per step.",
 									"parameter-type": "integer",
 									"value": "1"
 								}
