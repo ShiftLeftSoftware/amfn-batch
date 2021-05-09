@@ -290,7 +290,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -337,7 +337,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -380,7 +380,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -426,7 +426,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -478,7 +478,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -537,7 +537,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -595,7 +595,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -639,7 +639,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"interest-change": {
@@ -682,7 +682,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -724,7 +724,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -767,7 +767,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -810,7 +810,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"current-value": {
@@ -850,7 +850,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -909,7 +909,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -968,7 +968,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1197,7 +1197,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"current-value": {
@@ -1237,7 +1237,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1321,7 +1321,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"current-value": {
@@ -1363,7 +1363,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1495,7 +1495,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"interest-change": {
@@ -1535,7 +1535,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1579,7 +1579,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1622,7 +1622,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1666,7 +1666,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {
@@ -1725,7 +1725,7 @@
 								"periods": 1
 							},
 							"intervals": 1,
-							"frequency": "1-month",
+							"frequency": "6-months",
 							"end-date": "2002-01-01",
 							"extension": {
 								"principal-change": {

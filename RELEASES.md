@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.1 - 2021-05-10
+
+* Fix minor issues including grid positioning
+
+[0.3.1]: https://github.com/ShiftLeftSoftware/amfn-batch/releases/v0.3.1
+
 ## 0.3.0 - 2021-04-25
 
 * Release upgrade for completed AmFnWasm
