@@ -537,22 +537,19 @@ impl ProcessBatch {
                         }
                     }
                 }
-                _ => {
-
-                    match engine.balance_cashflow() {
-                        Err(e) => {
-                            BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                _ => match engine.balance_cashflow() {
+                    Err(e) => {
+                        BatchUtility::println(format!("Error: {:?}", e), Color::Red);
+                        action_failure += 1;
+                    }
+                    Ok(o) => {
+                        if ProcessBatch::check_action_results(&engine, &action, &o) {
+                            action_success += 1;
+                        } else {
                             action_failure += 1;
                         }
-                        Ok(o) => {
-                            if ProcessBatch::check_action_results(&engine, &action, &o) {
-                                action_success += 1;
-                            } else {
-                                action_failure += 1;
-                            }
-                        }
                     }
-                }
+                },
             }
         }
 
