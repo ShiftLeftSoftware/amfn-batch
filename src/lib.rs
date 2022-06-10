@@ -776,7 +776,7 @@ impl ProcessBatch {
         let taction_failures = action_failures.clone();
 
         std::thread::spawn(move || {
-            let tgroup = String::from(group.as_str());
+            let tgroup = group.clone();
 
             match ProcessBatch::execute_batch(name, group, locale, actions, inputs, outputs) {
                 Err(e) => {

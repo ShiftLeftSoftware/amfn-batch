@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.4 - 2022-06-10
+
+* More complete use of clone.
+
+[0.3.4]: https://github.com/ShiftLeftSoftware/amfn-batch/releases/v0.3.4
+
 ## 0.3.3 - 2021-05-28
 
 * Fix cashflow clear bug
