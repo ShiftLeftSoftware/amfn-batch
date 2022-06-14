@@ -69,24 +69,16 @@ impl ProcessBatch {
 
             let adapter = AdapterFactory::get_adapter(crate::IOType::File);
 
-            let json_config: String;
-            match adapter.read(config_name) {
-                Err(e) => {
-                    return Err(e);
-                }
-                Ok(o) => {
-                    json_config = o;
-                }
-            }
-            let list_batch: ListBatch;
-            match JsonDeserialize::deserialize(json_config) {
-                Err(e) => {
-                    return Err(e);
-                }
-                Ok(o) => {
-                    list_batch = o;
-                }
-            }
+            let json_config: String = match adapter.read(config_name) {
+                Err(e) => return Err(e),
+                Ok(o) => o,
+            };
+
+            let list_batch: ListBatch = match JsonDeserialize::deserialize(json_config) {
+                Err(e) => return Err(e),
+                Ok(o) => o,
+            };
+
             let mut threads = list_batch.threads();
             let mut index: usize = 0;
             if threads == 0 {
@@ -263,16 +255,13 @@ impl ProcessBatch {
         for input in inputs {
             let adapter = AdapterFactory::get_adapter(input.io_type());
 
-            let json_input: String;
-            match adapter.read(input.location()) {
+            let json_input: String = match adapter.read(input.location()) {
                 Err(e) => {
                     BatchUtility::println(format!("Error: {:?}", e), Color::Red);
                     return Err(e);
                 }
-                Ok(o) => {
-                    json_input = o;
-                }
-            }
+                Ok(o) => o,
+            };
 
             match json.deserialize(json_input) {
                 Err(e) => {

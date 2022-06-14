@@ -34,29 +34,19 @@ impl JsonDeserialize {
     /// * ERROR_NONE if successful, otherwise error code.
 
     pub fn deserialize(input_param: String) -> Result<ListBatch, crate::ErrorType> {
-        let data: JsonValue;
-        match json::parse(input_param.as_str()) {
-            Err(_e) => {
-                return Err(crate::ErrorType::Json);
-            }
-            Ok(o) => {
-                data = o;
-            }
-        }
+        let data: JsonValue = match json::parse(input_param.as_str()) {
+            Err(_e) => return Err(crate::ErrorType::Json),
+            Ok(o) => o,
+        };
 
         if data["threads"].is_null() || data["batches"].is_null() {
             return Err(crate::ErrorType::Json);
         }
 
-        let threads: usize;
-        match data["threads"].as_usize() {
-            None => {
-                return Err(crate::ErrorType::Json);
-            }
-            Some(n) => {
-                threads = n;
-            }
-        }
+        let threads: usize = match data["threads"].as_usize() {
+            None => return Err(crate::ErrorType::Json),
+            Some(n) => n,
+        };
 
         let mut list_batches = ListBatch::new(threads);
         let result = JsonDeserialize::deserialize_batches(&data["batches"], &mut list_batches);
@@ -89,45 +79,26 @@ impl JsonDeserialize {
                 break;
             }
 
-            let name: &str;
-            match batch["name"].as_str() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    name = o;
-                }
-            }
+            let name: &str = match batch["name"].as_str() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => o,
+            };
 
-            let group: &str;
-            match batch["group"].as_str() {
-                None => {
-                    group = "";
-                } // Optional
-                Some(o) => {
-                    group = o;
-                }
-            }
+            let group: &str = match batch["group"].as_str() {
+                None => "", // Optional
+                Some(o) => o,
+            };
 
-            let locale: &str;
-            match batch["locale"].as_str() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    locale = o;
-                }
-            }
+            let locale: &str = match batch["locale"].as_str() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => o,
+            };
 
-            let enabled: bool;
-            match batch["enabled"].as_bool() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    enabled = o;
-                }
-            }
+            let enabled: bool = match batch["enabled"].as_bool() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => o,
+            };
+
             let actions: Vec<ElemBatchAction>;
             if batch["actions"].is_null() {
                 actions = Vec::new();
@@ -203,15 +174,10 @@ impl JsonDeserialize {
                 break;
             }
 
-            let action: crate::ActionType;
-            match act["action"].as_str() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    action = JsonDeserialize::get_action(o);
-                }
-            }
+            let action: crate::ActionType = match act["action"].as_str() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => JsonDeserialize::get_action(o),
+            };
 
             let mut template_group = String::from("");
             if !act["template-group"].is_null() {
@@ -386,37 +352,22 @@ impl JsonDeserialize {
                 break;
             }
 
-            let io_type: &str;
-            match io["io-type"].as_str() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    io_type = o;
-                }
-            }
+            let io_type: &str = match io["io-type"].as_str() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => o,
+            };
 
-            let location: &str;
-            match io["location"].as_str() {
-                None => {
-                    return Err(crate::ErrorType::Json);
-                }
-                Some(o) => {
-                    location = o;
-                }
-            }
+            let location: &str = match io["location"].as_str() {
+                None => return Err(crate::ErrorType::Json),
+                Some(o) => o,
+            };
 
             let mut options: usize = 0;
             if !io["options"].is_null() {
-                let options_str: &str;
-                match io["options"].as_str() {
-                    None => {
-                        return Err(crate::ErrorType::Json);
-                    }
-                    Some(o) => {
-                        options_str = o;
-                    }
-                }
+                let options_str: &str = match io["options"].as_str() {
+                    None => return Err(crate::ErrorType::Json),
+                    Some(o) => o,
+                };
 
                 options = JsonDeserialize::get_options(options_str);
             }
